@@ -5,8 +5,25 @@
   width: 500px;
   height: 300px;
   text-align: center;
-  border-radius: 25px;
+  border-radius: 10px;
   background: url('../img/armitage-concert-bw.jpg');
+  display: block;
+  /*margin-left: auto;*/
+  margin-right: auto;
+  background-size: 1000px 400px ;
+  margin-left:10%;
+  
+
+}
+
+.boxedsignup{
+  border: 1px #FFFAFA ;
+  position:relative;
+  top:70px;
+  width: 500px;
+  height: 300px;
+  text-align: center;
+  border-radius: 25px;
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -25,12 +42,33 @@ h1 {
   font-style: normal;
   font-variant: normal;
   font-weight: 500;
-  line-height: 26.3999996185303px;
+  line-height: 50px;
   color:white;
+
 }
 
-.pure-button{
+.pure-button.sign-up{
   position: relative;
   float:right;
+}
+.container{
+  margin: 0 auto;
+}
+.signup{
+float:left;
+margin-top: 10%;
+margin-left: 16%;
+}
+.turntable{
+
+float:right;
+margin-top: 10%;
+margin-right: 16%;
 
 }
+.turntablepic{
+  width:50%;
+  height:50%;
+}
+
+

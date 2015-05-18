@@ -1,6 +1,6 @@
 var mysql = require('mysql')
 
-exports.variable = "SHIT";
+
 
 
 var connection = mysql.createConnection({
