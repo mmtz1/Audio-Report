@@ -1,8 +1,5 @@
 var mysql = require('mysql')
-
-
-
-
+exports.x = 100
 var connection = mysql.createConnection({
     host        : 'localhost',
     port        :  3306,
@@ -11,6 +8,4 @@ var connection = mysql.createConnection({
     database    : 'chat'
 });
 
-connection.connect()
-
-connection.end()
+exports.mysql = connection; 
