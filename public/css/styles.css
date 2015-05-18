@@ -28,3 +28,9 @@ h1 {
   line-height: 26.3999996185303px;
   color:white;
 }
+
+.pure-button{
+  position: relative;
+  float:right;
+
+}
