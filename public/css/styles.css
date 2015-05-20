@@ -1,4 +1,4 @@
-.boxed {
+.nicetext {
   border: 1px #FFFAFA ;
   position:relative;
   top:70px;
@@ -71,4 +71,32 @@ margin-right: 16%;
   height:50%;
   margin-left:40%;
 }
+.row {
+  position: relative;
+  top: -20px;
+  left: 20px;
+  background-color: white;
+  width: 500px;
+}
 
+#artistcontainer{
+  top:100px;
+}
+
+.artistbutton{
+  position:absolute;
+  top:100px;
+}
+
+.artistpageview{
+  position:absolute;
+  top:20%;
+  left:20px;
+}
+
+#rateYo{
+  position:absolute;
+  top:20%;
+  
+
+}

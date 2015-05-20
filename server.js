@@ -7,6 +7,7 @@ var bodyParser = require('body-parser')
 app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/public/views'));
 app.use(express.static(__dirname + '/public/controlers'));
+app.use(express.static(__dirname + '/public/lib'));
 
 app.use(bodyParser())
 
