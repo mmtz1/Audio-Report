@@ -44,10 +44,11 @@ app.post('/signup',function(req,res){
   }); 
 })
 
-app.post('/artist',function(req,res){
-  var newArtist = req.body;
+
+app.post('/artistsearch',function(req,res){
+  var newUser = req.body;
   
-  connection.query('INSERT INTO artist SET ?',newArtist , function(err, rows,fields){
+  connection.query('INSERT INTO users SET ?',newUser, function(err, rows,fields){
     if (!err){
       console.log("posted to database")
       res.sendStatus(200);
@@ -55,8 +56,8 @@ app.post('/artist',function(req,res){
       console.log('Error while performing Query.');
       res.sendStatus(500);
     }
-  });
-  }) 
+  }); 
+})
 
 
 // app.get('/artists',function(req,res){
