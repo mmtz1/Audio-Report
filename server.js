@@ -46,8 +46,7 @@ app.post('/signup',function(req,res){
 
 
 app.post('/artistsearch',function(req,res,next){
-  var newArtist = req.body;
-  //Check if in database 
+  var newArtist = req.body; 
   connection.query('SELECT artist_name FROM artist WHERE artist_name = ?',
                   [req.body.artist_name],
                   function(err, rows,fields){
@@ -59,7 +58,6 @@ app.post('/artistsearch',function(req,res,next){
 
 },function(req,res,next){
   var newArtist = req.body;
-  console.log(newArtist)
   connection.query('INSERT INTO artist SET ?',newArtist, function(err, rows,fields){
     if (!err){
       console.log("posted to database")
@@ -71,20 +69,6 @@ app.post('/artistsearch',function(req,res,next){
   }); 
 })
 
-
-// app.get('/artists',function(req,res){
-//   var newUser = req.body;
-  
-//   connection.query('INSERT INTO users SET ?',newUser, function(err, rows,fields){
-//     if (!err){
-//       console.log("posted to database")
-//       res.sendStatus(200);
-//     }else{
-//       console.log('Error while performing Query.');
-//       res.sendStatus(500);
-//     }
-//   }); 
-// })
 
 
 app.listen(3000);
