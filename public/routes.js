@@ -17,5 +17,4 @@ $routeProvider
     templateUrl : '/artistpage.html',
     controller  : 'artistCtrl'
   })
-
-});
+})

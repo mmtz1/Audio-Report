@@ -15,16 +15,14 @@
 
   </head>
   <body ng-app='LiveAPP'>
-    <div class="header">
+    <div class="header" ng-controller='mainCtrl'>
         <div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed">
             <a class="pure-menu-heading">Live</a>
             <ul class="pure-menu-list">
               <li class="pure-menu-item pure-menu-selected center">
-                  <form class="pure-form">
-                    <fieldset>
-                        <input type="password" placeholder="Artist">
+                  <form class="pure-form" ng-submit="somefunc(field)">
+                        <input type="text" placeholder="Artist" name="field" ng-model="field" >
                         <button type="submit" class="pure-button pure-button-primary">   Search</button>
-                    </fieldset>
                   </form>
               </li> 
             </ul>
@@ -33,13 +31,7 @@
 
         </div>
     </div>
-
-
-    
-    
-
     <div ng-view></div>
-    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     

@@ -17,7 +17,7 @@ var connection = mysql.createConnection({
     port        :  3306,
     user        : 'root',
     password    : '',
-    database    : 'live_users'
+    database    : 'live'
 });
 
 
@@ -43,6 +43,37 @@ app.post('/signup',function(req,res){
     }
   }); 
 })
+
+app.post('/artist',function(req,res){
+  var newArtist = req.body;
+  
+  connection.query('INSERT INTO artist SET ?',newArtist , function(err, rows,fields){
+    if (!err){
+      console.log("posted to database")
+      res.sendStatus(200);
+    }else{
+      console.log('Error while performing Query.');
+      res.sendStatus(500);
+    }
+  });
+  }) 
+
+
+// app.get('/artists',function(req,res){
+//   var newUser = req.body;
+  
+//   connection.query('INSERT INTO users SET ?',newUser, function(err, rows,fields){
+//     if (!err){
+//       console.log("posted to database")
+//       res.sendStatus(200);
+//     }else{
+//       console.log('Error while performing Query.');
+//       res.sendStatus(500);
+//     }
+//   }); 
+// })
+
+
 app.listen(3000);
 
 console.log("Listening at 3000")
