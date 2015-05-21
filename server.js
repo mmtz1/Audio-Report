@@ -45,10 +45,22 @@ app.post('/signup',function(req,res){
 })
 
 
-app.post('/artistsearch',function(req,res){
-  var newUser = req.body;
+app.post('/artistsearch',function(req,res,next){
+  var newArtist = req.body;
+  //Check if in database 
+  connection.query('SELECT artist_name FROM artist WHERE artist_name = ?',
+                  [req.body.artist_name],
+                  function(err, rows,fields){
+                    if(rows.length === 0){
+                      next()
+                    }
+                  })
   
-  connection.query('INSERT INTO users SET ?',newUser, function(err, rows,fields){
+
+},function(req,res,next){
+  var newArtist = req.body;
+  console.log(newArtist)
+  connection.query('INSERT INTO artist SET ?',newArtist, function(err, rows,fields){
     if (!err){
       console.log("posted to database")
       res.sendStatus(200);
