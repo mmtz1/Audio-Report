@@ -1,7 +1,10 @@
-angular.module('LiveAPP', ['ngRoute',
+angular.module('LiveAPP', [
+                          'ngRoute',
                           'LiveAPP.main',
-                          'LiveAPP.signUp',
-                          'LiveAPP.artist'])
+                          'LiveAPP.artist',
+                          'liveAPP.signup',
+                          'LiveAPP.factory'
+                          ])
 
 .config(function($routeProvider, $httpProvider) {
 $routeProvider
@@ -17,5 +20,5 @@ $routeProvider
     templateUrl : '/artistpage.html',
     controller  : 'artistCtrl'
   })
+})
 
-});

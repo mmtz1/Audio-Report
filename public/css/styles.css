@@ -55,15 +55,14 @@ h1 {
   margin: 0 auto;
 }
 .signup{
-float:left;
-margin-top: 10%;
-margin-left: 16%;
+  float:left;
+  margin-top: 10%;
+  margin-left: 16%;
 }
 .turntable{
-
-float:right;
-margin-top: 10%;
-margin-right: 16%;
+  float:right;
+  margin-top: 10%;
+  margin-right: 16%;
 
 }
 .turntablepic{
@@ -71,6 +70,19 @@ margin-right: 16%;
   height:50%;
   margin-left:40%;
 }
-div.container.artist{
-  top: 20%;
+
+.col-sm-6.reviews {
+  padding: 0 !important;
+  margin: 0 !important;
+  line-height: 35px;
+}
+
+div.container.this{
+  position:relative;
+  margin-top:40px;
+  right:50%;
+  margin-left: 0px;
+  margin-right: auto;
+  left: 0;
+  right: 0;
 }
