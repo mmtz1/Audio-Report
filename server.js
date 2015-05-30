@@ -54,12 +54,13 @@ app.post('/artistsearch',function(req,res,next){
                       next()
                     }
                   })
-}, function(req,res,next){
+}, 
+
+function(req,res,next){
   image = {};
   image["img_url"] = req.body.artist_img
   delete req.body.artist_img
   var newartist = req.body
-
   connection.query('INSERT INTO artist SET ?',newartist, function(err, rows,fields){
     if (!err){
       console.log("Posted to database")
@@ -69,7 +70,9 @@ app.post('/artistsearch',function(req,res,next){
       res.sendStatus(500);
     }
   }); 
-}, function(req,res,next){
+}, 
+
+function(req,res,next){
   connection.query('INSERT INTO artist_img SET ?',image, function(err, rows,fields){
     if (!err){
       console.log("Posted to database")
