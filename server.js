@@ -46,7 +46,7 @@ app.post('/signup',function(req,res){
 
 
 app.post('/artistsearch',function(req,res,next){
-  var newArtist = req.body; 
+  var newArtist = req.body;
   connection.query('SELECT artist_name FROM artist WHERE artist_name = ?',
                   [req.body.artist_name],
                   function(err, rows,fields){
@@ -54,13 +54,25 @@ app.post('/artistsearch',function(req,res,next){
                       next()
                     }
                   })
-  
+}, function(req,res,next){
+  image = {};
+  image["img_url"] = req.body.artist_img
+  delete req.body.artist_img
+  var newartist = req.body
 
-},function(req,res,next){
-  var newArtist = req.body;
-  connection.query('INSERT INTO artist SET ?',newArtist, function(err, rows,fields){
+  connection.query('INSERT INTO artist SET ?',newartist, function(err, rows,fields){
     if (!err){
-      console.log("posted to database")
+      console.log("Posted to database")
+      next()
+    }else{
+      console.log('Error while performing Query.');
+      res.sendStatus(500);
+    }
+  }); 
+}, function(req,res,next){
+  connection.query('INSERT INTO artist_img SET ?',image, function(err, rows,fields){
+    if (!err){
+      console.log("Posted to database")
       res.sendStatus(200);
     }else{
       console.log('Error while performing Query.');
@@ -68,6 +80,7 @@ app.post('/artistsearch',function(req,res,next){
     }
   }); 
 })
+
 
 
 
