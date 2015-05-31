@@ -15,7 +15,8 @@ CREATE TABLE artist(
 CREATE TABLE artist_img(
   img_id INT NOT NULL AUTO_INCREMENT,
   img_url VARCHAR(100) NOT NULL,
-  PRIMARY KEY (img_id)
+  artist_id SMALLINT UNSIGNED NOT NULL REFERENCES person(id),
+  PRIMARY KEY ( img_id ) 
 );
 
 

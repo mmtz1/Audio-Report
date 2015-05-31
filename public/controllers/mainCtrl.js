@@ -4,9 +4,11 @@ angular.module('LiveAPP.main',['LiveAPP.factory'])
 function mainCtrl($scope,$http,$location,dataFactory){
   $scope.getArtist = function(artist){
       dataFactory.ArtistfromSpotify(artist).success(function(data){
-      console.log(data)
-      console.log(data.artists.items[0].images[1].url)
-      dataFactory.postTodb(data)
+      dataFactory.postTodb(data).success(function(datas){
+        dataFactory.artistinfo = datas[0]
+        $location.path('/artist')
+      })
+      
     })
   }
 };

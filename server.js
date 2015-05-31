@@ -1,8 +1,10 @@
 var express = require('express');
 var app = express();
 var mysql = require('mysql');
-
+var dbhelpers = require('./public/database_helpers.js')
 var bodyParser = require('body-parser')
+
+
 
 app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/public/views'));
@@ -17,7 +19,8 @@ var connection = mysql.createConnection({
     port        :  3306,
     user        : 'root',
     password    : '',
-    database    : 'live'
+    database    : 'live',
+    multipleStatements: true
 });
 
 
@@ -32,7 +35,7 @@ if(!err) {
 
 app.post('/signup',function(req,res){
   var newUser = req.body;
-  
+
   connection.query('INSERT INTO users SET ?',newUser, function(err, rows,fields){
     if (!err){
       console.log("posted to database")
@@ -45,44 +48,14 @@ app.post('/signup',function(req,res){
 })
 
 
-app.post('/artistsearch',function(req,res,next){
-  var newArtist = req.body;
-  connection.query('SELECT artist_name FROM artist WHERE artist_name = ?',
-                  [req.body.artist_name],
-                  function(err, rows,fields){
-                    if(rows.length === 0){
-                      next()
-                    }
-                  })
-}, 
+app.post('/artistsearch', dbhelpers.checkDbArtist, dbhelpers.insertDb)
 
-function(req,res,next){
-  image = {};
-  image["img_url"] = req.body.artist_img
-  delete req.body.artist_img
-  var newartist = req.body
-  connection.query('INSERT INTO artist SET ?',newartist, function(err, rows,fields){
-    if (!err){
-      console.log("Posted to database")
-      next()
-    }else{
-      console.log('Error while performing Query.');
-      res.sendStatus(500);
-    }
-  }); 
-}, 
 
-function(req,res,next){
-  connection.query('INSERT INTO artist_img SET ?',image, function(err, rows,fields){
-    if (!err){
-      console.log("Posted to database")
-      res.sendStatus(200);
-    }else{
-      console.log('Error while performing Query.');
-      res.sendStatus(500);
-    }
-  }); 
-})
+
+// REQUEST BODY { artist_name: 'Kid Cudi',
+//   artist_genre: 'alternative hip hop',
+//   artist_img: 'https://i.scdn.co/image/56ef893e66fe4c2f6a6f511a5d0ce280521896f8' }
+
 
 
 
