@@ -35,6 +35,7 @@ if(!err) {
 
 app.post('/signup',function(req,res){
   var newUser = req.body;
+  
 
   connection.query('INSERT INTO users SET ?',newUser, function(err, rows,fields){
     if (!err){
@@ -47,8 +48,10 @@ app.post('/signup',function(req,res){
   }); 
 })
 
+app.get('/artistsearch',dbhelpers.checkDbArtist)
 
-app.post('/artistsearch', dbhelpers.checkDbArtist, dbhelpers.insertDb)
+
+app.post('/artistsearch', dbhelpers.insertDb)
 
 
 

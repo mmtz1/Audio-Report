@@ -16,7 +16,6 @@ function signUpCtrl($scope,$http){
             user_password:user.password
           }      
       }).success(function(data){
-        
         console.log("User posted to the database")
       });
 };

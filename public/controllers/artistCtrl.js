@@ -19,18 +19,17 @@ angular.module('LiveAPP.artist',[])
 
 
 function artistCtrl($scope,$http, $location,dataFactory){
-   $scope.myRating = {number:3}
-   $scope.artistInfo = {
-    name:dataFactory.artistinfo.artist_name,
-    genre:dataFactory.artistinfo.artist_genre
-  }
+    $scope.myRating = {
+      number:3
+    };
 
-   
+    $scope.artistInfo = {
+      name:dataFactory.artistinfo.artist_name,
+      genre:dataFactory.artistinfo.artist_genre,
+      image:dataFactory.artistinfo.artist_imageurl,
+      bio:dataFactory.artistinfo.artist_bio
+    };
 
-   $scope.console = function(){
-    console.log(dataFactory.artistinfo.artist_name)
-   }
-   $scope.console();
 }
 
 
