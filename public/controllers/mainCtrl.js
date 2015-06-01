@@ -5,9 +5,9 @@ function mainCtrl($scope,$http,$location,dataFactory){
   $scope.getArtist = function(artist){
     $location.path('/artist/' + artist)
     dataFactory.checkDb(artist).success(function(data){
-      console.log("THis is the data",data)
+      
       if (data != "No data"){
-        console.log("we made it")
+        console.log("Data was already in database")
         dataFactory.artistinfo = data[0]
       }
 
