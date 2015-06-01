@@ -1,7 +1,3 @@
-
-
-USE live;
-
 CREATE TABLE users(
   users_id INT NOT NULL AUTO_INCREMENT,
   user_username VARCHAR(100) NOT NULL,
@@ -13,6 +9,10 @@ CREATE TABLE artist(
   artist_id INT NOT NULL AUTO_INCREMENT,
   artist_name VARCHAR(100) NOT NULL,
   artist_genre VARCHAR(100) NOT NULL,
+  artist_imageurl VARCHAR(100) NOT NULL,
+  artist_bio VARCHAR(1000) NOT NULL,
   PRIMARY KEY ( artist_id )
 );
+
+
 

@@ -16,7 +16,7 @@ $routeProvider
     templateUrl : '/signup.html',
     controller  : 'signUpCtrl'
   })
-  .when('/artist',{
+  .when('/artist/:artistname',{
     templateUrl : '/artistpage.html',
     controller  : 'artistCtrl'
   })

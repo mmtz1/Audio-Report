@@ -3,10 +3,38 @@ angular.module('LiveAPP.main',['LiveAPP.factory'])
 
 function mainCtrl($scope,$http,$location,dataFactory){
   $scope.getArtist = function(artist){
-    dataFactory.ArtistfromSpotify(artist).success(function(data){
-      dataFactory.postTodb(data)
+    $location.path('/artist/' + artist)
+    dataFactory.checkDb(artist).success(function(data){
+      console.log("THis is the data",data)
+      if (data != "No data"){
+        console.log("we made it")
+        dataFactory.artistinfo = data[0]
+      }
+
+      else{
+      dataFactory.artistfromSpotify(artist).success(function(data){
+        console.log("spotify data",data)
+        dataFactory.artistInformation = data;
+
+        dataFactory.artistBio(data.artists.items[0].name).success(function(data){
+          console.log("echo data",data)
+          dataFactory.artistInformation.artistBio = data.response.biographies[0].text;
+          
+          dataFactory.postTodb(dataFactory.artistInformation).success(function(dbData){
+            dataFactory.checkDb(dbData).success(function(data){
+              console.log("DATA from database after insertion",data[0])
+              dataFactory.artistinfo = data[0]
+              console.log("datafactorydata", dataFactory.artistinfo)
+            })
+            
+            
+            
+        })
+      })  
     })
   }
+  })
 
+  }
 };
 
