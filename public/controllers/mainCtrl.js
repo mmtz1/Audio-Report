@@ -3,14 +3,14 @@ angular.module('LiveAPP.main',['LiveAPP.factory'])
 
 function mainCtrl($scope,$http,$location,dataFactory){
   $scope.getArtist = function(artist){
-    $location.path('/artist/' + artist)
+    
     dataFactory.checkDb(artist).success(function(data){
-      
       if (data != "No data"){
-        console.log("Data was already in database")
+        console.log("Data was already in database",data[0])
         dataFactory.artistinfo = data[0]
+        $location.path("/artist/" + artist)
+      
       }
-
       else{
       dataFactory.artistfromSpotify(artist).success(function(data){
         console.log("spotify data",data)
@@ -25,15 +25,12 @@ function mainCtrl($scope,$http,$location,dataFactory){
               console.log("DATA from database after insertion",data[0])
               dataFactory.artistinfo = data[0]
               console.log("datafactorydata", dataFactory.artistinfo)
-            })
-            
-            
-            
-        })
-      })  
+            }).then(function(){$location.path("/artist/" + artist)})
+          })
+        })  
+      })
+    }
     })
-  }
-  })
 
   }
 };
