@@ -32,7 +32,7 @@ exports.insertDb = function(req,res,next){
   var artistImg = req.body.artist_imageurl || "";
   var artistBio = req.body.artist_bio.match( /[^\.!\?]+[\.!\?]+/g ).splice(0,4).join("") || "";
   
-  
+  console.log(req.body)
   connection.query('INSERT INTO ?? SET ?', ['artist',{artist_name: artistName,artist_genre: artistGenre, artist_imageurl:artistImg,artist_bio:artistBio}], function(err, result,rows){
       if (!err){
         res.send(artistName)

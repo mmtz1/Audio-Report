@@ -4,34 +4,58 @@ angular.module('LiveAPP.main',['LiveAPP.factory'])
 function mainCtrl($scope,$http,$location,dataFactory){
   $scope.getArtist = function(artist){
     
-    dataFactory.checkDb(artist).success(function(data){
-      if (data != "No data"){
-        console.log("Data was already in database",data[0])
-        dataFactory.artistinfo = data[0]
-        $location.path("/artist/" + artist)
-      
+    dataFactory.checkDb(artist).then(function(data){
+      if(data.data != "No data"){
+        dataFactory.artistinfo = data.data[0]
       }
-      else{
-      dataFactory.artistfromSpotify(artist).success(function(data){
-        console.log("spotify data",data)
-        dataFactory.artistInformation = data;
+      return data.data
 
-        dataFactory.artistBio(data.artists.items[0].name).success(function(data){
-          console.log("echo data",data)
-          dataFactory.artistInformation.artistBio = data.response.biographies[0].text;
-          
-          dataFactory.postTodb(dataFactory.artistInformation).success(function(dbData){
-            dataFactory.checkDb(dbData).success(function(data){
-              console.log("DATA from database after insertion",data[0])
-              dataFactory.artistinfo = data[0]
-              console.log("datafactorydata", dataFactory.artistinfo)
-            }).then(function(){$location.path("/artist/" + artist)})
-          })
-        })  
-      })
-    }
+    }).then(function(data){
+      if(data === "No data"){
+        $scope.hitAPI(artist);
+      } else{
+        $location.path('/artist/' + artist)
+      }
     })
 
   }
-};
+
+
+
+  $scope.hitAPI = function(artist){
+
+      dataFactory.artistfromSpotify(artist).success(function(data){
+        dataFactory.artistInformation = data;
+        
+        dataFactory.artistBio(data.artists.items[0].name).success(function(data){
+          console.log(data)
+          for(var i = 0; i < data.response.biographies.length; i++){
+            console.log(data.response.biographies[i].site)
+            if(data.response.biographies[i].site === 'wikipedia'){
+              dataFactory.artistInformation.artistBio = data.response.biographies[i].text
+            }
+          }
+          dataFactory.postTodb(dataFactory.artistInformation).success(function(dbData){
+            
+            dataFactory.checkDb(dbData).success(function(data){
+              dataFactory.artistinfo = data[0]
+
+            }).then(function(){
+                
+                $location.path("/artist/" + artist)
+                }) 
+          })
+        })   
+      })
+    }
+}    
+
+
+
+
+
+    
+
+
+
 

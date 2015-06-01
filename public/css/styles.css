@@ -1,3 +1,12 @@
+hr {
+    width:95%;
+    border: none;
+    height: 1px;
+    /* Set the hr color */
+    color: #333; /* old IE */
+    background-color: #333; /* Modern Browsers */
+}
+
 .nicetext {
   border: 1px #FFFAFA ;
   position:relative;
@@ -81,7 +90,7 @@ div.container.this{
   /*position:relative;*/
   margin-top:40px;
   right:50%;
-  margin-left: 0px;
+  margin-left: 15px;
   margin-right: auto;
   left: 0;
   right: 0; 
@@ -93,4 +102,13 @@ div.container.this{
   height:100%;
   width:100%;
   float:right;
+}
+
+div.container.signin{
+  margin-top:100px;
+}
+
+.reviewheader{
+  margin-left: 25px;
+  margin-bottom:-15px;
 }
