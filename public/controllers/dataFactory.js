@@ -8,13 +8,13 @@ function dataFactory($http){
   dataFactory.artistInformation = {}
 
   dataFactory.checkDb = function(artist){
-    console.log(artist)
-    return $http({
+     return $http({
         method: 'GET',
         url: '/artistsearch',
-        data: "SHIT"
+        params: {artistname: artist}
     })
-  }
+  };
+
 
 
   dataFactory.artistfromSpotify = function(artist){

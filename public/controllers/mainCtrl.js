@@ -5,11 +5,11 @@ function mainCtrl($scope,$http,$location,dataFactory){
   $scope.getArtist = function(artist){
     $location.path('/artist/' + artist)
     dataFactory.checkDb(artist).success(function(data){
-      console.log(data)
-      if (data != "No data"){
+      console.log("THis is the data",data)
 
-        dataFactory.artistinfo = data
-        
+      if (data != "No data"){
+        console.log("we made it")
+        dataFactory.artistinfo = data[0]
       }
       
       else{
@@ -22,8 +22,11 @@ function mainCtrl($scope,$http,$location,dataFactory){
           dataFactory.artistInformation.artistBio = data.response.biographies[0].text;
           
           dataFactory.postTodb(dataFactory.artistInformation).success(function(dbData){
-            console.log("This is the data returned by database",dbData)
-            dataFactory.artistinfo = dbData[0]
+            dataFactory.checkDb(dbData).success(function(data){
+              console.log("DATA from database after insertion",data[0])
+              dataFactory.artistinfo = data[0]
+            })
+            
             
             
         })

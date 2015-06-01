@@ -12,37 +12,30 @@ var connection = mysql.createConnection({
 
 
 exports.checkDbArtist = function(req,res,next){
-  var newArtist = req.body;
-  console.log("req.body",req.body)
-  connection.query('SELECT artist_name FROM artist WHERE artist_name = ?', 
-  [req.body.artist_name], function(err, rows,fields){
-      if(rows.length === 0){
-        next();
-      } else{
-        connection.query(
-          'SELECT * FROM artist INNER JOIN artist_img ON artist.artist_id = artist_img.artist_id WHERE artist_name = "John Legend"',
-          function(err,rows,fields){
-            res.send(rows)
-          })
-      }
-    })
+  var newArtist = [req.query.artistname];
+  
+  connection.query('SELECT * FROM artist WHERE artist_name = ?', 
+  newArtist, function(err, rows,fields){
+    if(rows.length != 0){
+      res.send(rows)
+    }
+    else{
+      res.send("No data")
+    }
+  })
 }
 
 exports.insertDb = function(req,res,next){
+  
   var artistName = req.body.artist_name;
   var artistGenre = req.body.artist_genre || "";
+  var artistImg = req.body.artist_imageurl || "";
+  var artistBio = req.body.artist_bio || "";
   
   
-  connection.query('INSERT INTO ?? SET ?', ['artist',{artist_name: artistName,artist_genre: artistGenre}], function(err, result){
+  connection.query('INSERT INTO ?? SET ?', ['artist',{artist_name: artistName,artist_genre: artistGenre, artist_imageurl:artistImg,artist_bio:artistBio}], function(err, result,rows){
       if (!err){
-        var artistId = result.insertId;
-        var artistUrl = req.body.artist_img
-
-        connection.query('INSERT INTO ?? SET ?', 
-          ['artist_img',{artist_id: artistId, img_url: artistUrl}], 
-          function(err, rows,fields){
-            res.sendStatus(200)
-          })
+        res.send(artistName)
       } else{
         console.log('Error while performing Query.');
       }
