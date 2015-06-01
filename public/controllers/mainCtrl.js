@@ -6,12 +6,11 @@ function mainCtrl($scope,$http,$location,dataFactory){
     $location.path('/artist/' + artist)
     dataFactory.checkDb(artist).success(function(data){
       console.log("THis is the data",data)
-
       if (data != "No data"){
         console.log("we made it")
         dataFactory.artistinfo = data[0]
       }
-      
+
       else{
       dataFactory.artistfromSpotify(artist).success(function(data){
         console.log("spotify data",data)
@@ -25,6 +24,7 @@ function mainCtrl($scope,$http,$location,dataFactory){
             dataFactory.checkDb(dbData).success(function(data){
               console.log("DATA from database after insertion",data[0])
               dataFactory.artistinfo = data[0]
+              console.log("datafactorydata", dataFactory.artistinfo)
             })
             
             
