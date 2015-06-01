@@ -78,13 +78,19 @@ h1 {
 }
 
 div.container.this{
-  position:relative;
+  /*position:relative;*/
   margin-top:40px;
   right:50%;
   margin-left: 0px;
   margin-right: auto;
   left: 0;
-  right: 0;
-  
-  
+  right: 0; 
+}
+
+
+.artistpageimage{
+  border-radius: 25px;
+  height:100%;
+  width:100%;
+  float:right;
 }
