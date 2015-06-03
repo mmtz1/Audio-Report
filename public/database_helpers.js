@@ -1,5 +1,6 @@
 var mysql = require('mysql');
 var express = require('express');
+var javascripthelp = require('./js/functionHelpers.js')
 
 var connection = mysql.createConnection({
     host        : 'localhost',
@@ -26,13 +27,12 @@ exports.checkDbArtist = function(req,res,next){
 }
 
 exports.insertDb = function(req,res,next){
-  console.log(req.body)
-  var artistName = req.body.artist_name;
-  var artistGenre = req.body.artist_genre || "";
+  var artistName = req.body.artist_name || "";
+  var artistGenre = javascripthelp.capital(req.body.artist_genre) || "";
   var artistImg = req.body.artist_imageurl || "";
   var artistBio = req.body.artist_bio.match( /[^\.!\?]+[\.!\?]+/g ).splice(0,4).join("") || "";
   
-  console.log(req.body)
+  console.log(artistName)
   connection.query('INSERT INTO ?? SET ?', ['artist',{artist_name: artistName,artist_genre: artistGenre, artist_imageurl:artistImg,artist_bio:artistBio}], function(err, result,rows){
       if (!err){
         res.send(artistName)

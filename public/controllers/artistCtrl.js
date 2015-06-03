@@ -30,6 +30,9 @@ function artistCtrl($scope,$http, $location,dataFactory){
       bio:dataFactory.artistinfo.artist_bio
     };
 
+    $scope.somefunc = function(){
+      $location.url("/review")
+    }
 }
 
 
