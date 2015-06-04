@@ -42,4 +42,14 @@ exports.insertDb = function(req,res,next){
     })
 }
 
+
+exports.insertReviewDb = function(req,res,next){
+  console.log("THIS IS THE DATA",req.body.artist_)
+  connection.query('SELECT artist_id FROM artist WHERE artist_name = ?',[req.body.artist_name],function(err,rows){
+    console.log(rows)
+  })
+}
+
+
+
 // res.sendStatus(200);
