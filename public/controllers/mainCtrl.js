@@ -28,22 +28,12 @@ function mainCtrl($scope,$http,$location,dataFactory){
         dataFactory.artistInformation = data;
         
         dataFactory.artistBio(data.artists.items[0].name).success(function(data){
-          console.log(data)
-          for(var i = 0; i < data.response.biographies.length; i++){
-            console.log(data.response.biographies[i].site)
-            if(data.response.biographies[i].site === 'wikipedia'){
-              dataFactory.artistInformation.artistBio = data.response.biographies[i].text
-            }
-          }
-          dataFactory.postTodb(dataFactory.artistInformation).success(function(dbData){
-            
-            dataFactory.checkDb(dbData).success(function(data){
-              dataFactory.artistinfo = data[0]
+          dataFactory.artistInformation.artistBio = dataFactory.findWiki(data);
 
-            }).then(function(){
-                
-                $location.path("/artist/" + artist)
-                }) 
+          dataFactory.postTodb(dataFactory.artistInformation).success(function(dbData){  
+            dataFactory.checkDb(dbData).success(function(data){
+              dataFactory.artistinfo = data[0]    
+            }).then(function(){ $location.path("/artist/" + artist)}) 
           })
         })   
       })

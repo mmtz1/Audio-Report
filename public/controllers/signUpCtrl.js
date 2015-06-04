@@ -1,6 +1,7 @@
 angular.module('liveAPP.signup',['LiveAPP.factory'])
 .controller('signUpCtrl', ['$scope','$http',signUpCtrl]);
 
+
 function signUpCtrl($scope,$http){
   $scope.user = {
     email:'',

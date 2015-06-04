@@ -1,0 +1,28 @@
+<div class="reviewcontainer">
+    <form class="pure-form pure-form-aligned">
+        <fieldset>
+            <div rate-yo id='stars' rating="therating" class="col-sm-4"></div>
+            <div class="pure-control-group">
+                <label for="name">Username</label>
+                <input id="name" type="text" placeholder="Username" ng-model="review.user_name">
+            </div>
+
+            <div class="pure-control-group">
+                <label for="ArtistName">Artist Name</label>
+                <input id="ArtistName" ng-model="review.artist_name" type="ArtistName">
+            </div>
+
+            <div class="pure-control-group">
+                <label for="Venue">Venue </label>
+                <input id="Venue" type="Venue" placeholder="Venue" ng-model="review.venue">
+            </div>
+     
+            <textarea class="pure-input-1-10" placeholder="Textareas work too" ng-model="review.review_details"></textarea>
+
+                <button type="submit" class="pure-button pure-button-primary" ng-click="reviewSubmission(review)">Submit</button>
+            </div>
+        </fieldset>
+    </form>
+</div>    
+
+

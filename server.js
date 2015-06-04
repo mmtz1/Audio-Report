@@ -41,7 +41,7 @@ app.post('/signup',function(req,res){
     if (!err){
       console.log("posted to database")
       res.sendStatus(200);
-    }else{
+    } else{
       console.log('Error while performing Query.');
       res.sendStatus(500);
     }
@@ -53,7 +53,7 @@ app.get('/artistsearch',dbhelpers.checkDbArtist)
 
 app.post('/artistsearch', dbhelpers.insertDb)
 
-
+app.post('/reviews',dbhelpers.insertReviewDb)
 
 // REQUEST BODY { artist_name: 'Kid Cudi',
 //   artist_genre: 'alternative hip hop',

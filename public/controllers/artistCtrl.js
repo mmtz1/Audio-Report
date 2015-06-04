@@ -10,9 +10,10 @@ angular.module('LiveAPP.artist',[])
         template: "<div id='rateYo'></div>",
         link: function( scope, ele, attrs ) {
             
-            $(ele).rateYo({
-                rating: scope.rating.number
-            });
+            var $rateYo = $(ele).rateYo({});
+            $rateYo.on("rateyo.change", function (e, data) {
+                scope.rating.number = data
+              });  
         }
     };
 });
@@ -30,6 +31,10 @@ function artistCtrl($scope,$http, $location,dataFactory){
       bio:dataFactory.artistinfo.artist_bio
     };
 
+    $scope.somefunc = function(){
+      dataFactory.reviewArtist = $scope.artistInfo.name
+      $location.url("/review")
+    }
 }
 
 

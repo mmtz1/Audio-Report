@@ -3,7 +3,8 @@ angular.module('LiveAPP', [
                           'LiveAPP.main',
                           'LiveAPP.artist',
                           'liveAPP.signup',
-                          'LiveAPP.factory'
+                          'LiveAPP.factory',
+                          'liveAPP.review'
                           ])
 
 .config(function($routeProvider, $httpProvider) {
@@ -20,5 +21,10 @@ $routeProvider
     templateUrl : '/artistpage.html',
     controller  : 'artistCtrl'
   })
+  .when('/review',{
+    templateUrl : '/review.html',
+    controller  : 'reviewCtrl'
+  })
+
 })
 

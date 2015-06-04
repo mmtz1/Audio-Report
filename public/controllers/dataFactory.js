@@ -34,6 +34,23 @@ function dataFactory($http){
                                        });
   }
 
+  dataFactory.findWiki = function(data){
+    for(var i = 0; i < data.response.biographies.length; i++){
+      if(data.response.biographies[i].site === 'wikipedia'){
+          return data.response.biographies[i].text;
+      }
+    }
+  }
+
+
+  dataFactory.postReview = function(data){
+    return $http.post('/reviews',data)
+  }
+
+  dataFactory.reviewArtist = "";
+
+
+
   dataFactory.artistinfo = "";
   
   return dataFactory;
