@@ -18,11 +18,7 @@ exports.checkDbArtist = function(req,res,next){
   connection.query('SELECT * FROM artist WHERE artist_name = ?', 
   newArtist, function(err, rows,fields){
     if(rows.length != 0){
-      var artistData = rows[0];
-      connection.query('SELECT * FROM reviews WHERE artist_id = ?',[artistData.artist_id],function(err,result){
-       result.push(artistData) 
-       res.send(result)
-      })
+      res.send(rows)
     }
     else{
       res.send("No data")
@@ -48,15 +44,14 @@ exports.insertDb = function(req,res,next){
 
 
 exports.insertReviewDb = function(req,res,next){
-  
+  console.log("REVIEW REQUEST BODY"req.body)
   connection.query('SELECT artist_id FROM artist WHERE artist_name = ?',[req.body.artist_name],function(err,rows){
     req.body.artist_id = rows[0].artist_id;
-    var lastArtist = req.body.artist_name;
-    delete req.body.artist_name;
-
+    
     connection.query('INSERT INTO ?? SET ?', ['reviews',req.body], function(err, result,rows){
+      console.log(rows)
       if (!err){
-        res.send(lastArtist);
+        res.sendStatus(200);
       } else{
         console.log('Error while performing Query.');
       }
@@ -64,16 +59,20 @@ exports.insertReviewDb = function(req,res,next){
   })
 }
 
-
+{ user_name: 'fdf',
+  venue: 'fdsfds',
+  artist_name: 'Drake',
+  number_of_stars: 0,
+  review_details: 'fdsfds',
+  artist_id: 1 }
 
 
 // CREATE TABLE reviews (
 //   review_id INT NOT NULL AUTO_INCREMENT,
-  
+//   artist_id VARCHAR(100) NOT NULL,
 //   user_name  VARCHAR(100) NOT NULL,
 //   venue VARCHAR(100) NOT NULL,
-//   number_of_stars INT NOT NULL,
 //   review_details VARCHAR(10000) NOT NULL,
-//   artist_id VARCHAR(100) NOT NULL,
+//   number_of_stars INT NOT NULL,
 //   PRIMARY KEY ( review_id )
 // );

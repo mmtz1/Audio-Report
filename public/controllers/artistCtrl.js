@@ -25,16 +25,37 @@ function artistCtrl($scope,$http, $location,dataFactory){
     };
 
     $scope.artistInfo = {
-      name:dataFactory.artistinfo.artist_name,
-      genre:dataFactory.artistinfo.artist_genre,
-      image:dataFactory.artistinfo.artist_imageurl,
-      bio:dataFactory.artistinfo.artist_bio
+      name: dataFactory.artistinfo.artist_name,
+      genre: dataFactory.artistinfo.artist_genre,
+      image: dataFactory.artistinfo.artist_imageurl,
+      bio: dataFactory.artistinfo.artist_bio
     };
 
     $scope.somefunc = function(){
       dataFactory.reviewArtist = $scope.artistInfo.name
       $location.url("/review")
     }
+
+    $scope.reviews = 
+    [{user_name: "Mark Martinez",
+      venue:"Great American Music Hall",
+      review_detail:"This concert was awesome!",
+      number_stars:4
+    },
+    {user_name: "Mark Martinez",
+      venue:"Great American Music Hall",
+      review_detail:"This concert was awesome!",
+      number_stars:4
+    },
+    {user_name: "Mark Martinez",
+      venue:"Great American Music Hall",
+      review_detail:"This concert was awesome!",
+      number_stars:4
+    }] 
+
+
+
+
 }
 
 

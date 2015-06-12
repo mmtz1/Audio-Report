@@ -13,8 +13,8 @@ function signUpCtrl($scope,$http){
           method: "post",
           url: "/signup",
           data:{
-            user_username:user.email,
-            user_password:user.password
+            user_username: user.email,
+            user_password: user.password
           }      
       }).success(function(data){
         console.log("User posted to the database")

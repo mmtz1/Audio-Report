@@ -5,10 +5,12 @@ function mainCtrl($scope,$http,$location,dataFactory){
   $scope.getArtist = function(artist){
     
     dataFactory.checkDb(artist).then(function(data){
+  
       if(data.data != "No data"){
-        dataFactory.artistinfo = data.data[0]
+        dataFactory.artistinfo = data.data.pop()
+        dataFactory.artistReviews = data.data
       }
-      return data.data
+      return data.data;
 
     }).then(function(data){
       if(data === "No data"){

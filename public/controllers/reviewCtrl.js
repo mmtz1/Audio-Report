@@ -1,5 +1,5 @@
 angular.module('liveAPP.review',['LiveAPP.factory'])
-.controller('reviewCtrl', ['$scope','$http','dataFactory',reviewCtrl])
+.controller('reviewCtrl', ['$scope','$http','dataFactory','$location',reviewCtrl])
 
 .directive("rateYoReview", function() {
     return {
@@ -11,7 +11,6 @@ angular.module('liveAPP.review',['LiveAPP.factory'])
         link: function( scope, ele, attrs ) {
             var $rateYo = $(ele).rateYo({});
             $rateYo.on("rateyo.change", function (e, data) {
-                
                 scope.rating.number = data
                 $scope.rating = data
               });  
@@ -20,31 +19,51 @@ angular.module('liveAPP.review',['LiveAPP.factory'])
 });
 
 
-
-
-function reviewCtrl($scope,$http,dataFactory){
+function reviewCtrl($scope,$http,dataFactory,$location){
   $scope.rating = "";
   $scope.therating = {
     number:2
   };
 
   $scope.review = {
-    user_name:"",
-    venue:"",
-    artist_name:dataFactory.reviewArtist,
-    number_of_stars:""
+    user_name: "",
+    venue: "",
+    artist_name: dataFactory.reviewArtist,
+    number_of_stars: ""
   }
+
+
+  
 
   
   $scope.reviewSubmission = function(review){
-    console.log($scope.therating.number.rating)
     $scope.review.number_of_stars = $scope.therating.number.rating;
-    console.log($scope.review)
-    dataFactory.postReview($scope.review)
-
+    dataFactory.postReview($scope.review).success(function(lastArtist){
+    $location.path('/artist/' + lastArtist)
+    })
   }
 
   
-  
 }
+
+
+// CREATE TABLE reviews (
+//   review_id INT NOT NULL AUTO_INCREMENT,
+//   artist_id VARCHAR(100) NOT NULL,
+//   user_name  VARCHAR(100) NOT NULL,
+//   venue VARCHAR(100) NOT NULL,
+//   review_details VARCHAR(10000) NOT NULL,
+//   number_of_stars INT NOT NULL,
+//   PRIMARY KEY ( review_id )
+// );
+
+
+
+
+
+
+
+
+
+
 
