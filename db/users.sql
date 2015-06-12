@@ -16,10 +16,11 @@ CREATE TABLE artist(
 
 CREATE TABLE reviews (
   review_id INT NOT NULL AUTO_INCREMENT,
-  artist_id VARCHAR(100) NOT NULL,
+  
   user_name  VARCHAR(100) NOT NULL,
   venue VARCHAR(100) NOT NULL,
-  review_details VARCHAR(10000) NOT NULL,
   number_of_stars INT NOT NULL,
+  review_details VARCHAR(10000) NOT NULL,
+  artist_id VARCHAR(100) NOT NULL,
   PRIMARY KEY ( review_id )
 );

@@ -5,7 +5,7 @@ angular.module('LiveAPP.factory',[])
 function dataFactory($http){
   var dataFactory = {};
 
-  dataFactory.artistInformation = {}
+  dataFactory.artistInformation = {};
 
   dataFactory.checkDb = function(artist){
      return $http({
@@ -27,10 +27,10 @@ function dataFactory($http){
 
   dataFactory.postTodb = function(data){
     return $http.post('/artistsearch', {
-                                      artist_name:data.artists.items[0].name,
-                                      artist_genre:data.artists.items[0].genres[0],  
-                                      artist_imageurl:data.artists.items[0].images[0].url,
-                                      artist_bio:data.artistBio
+                                      artist_name: data.artists.items[0].name,
+                                      artist_genre: data.artists.items[0].genres[0],  
+                                      artist_imageurl: data.artists.items[0].images[0].url,
+                                      artist_bio: data.artistBio
                                        });
   }
 
@@ -48,8 +48,6 @@ function dataFactory($http){
   }
 
   dataFactory.reviewArtist = "";
-
-
 
   dataFactory.artistinfo = "";
   
