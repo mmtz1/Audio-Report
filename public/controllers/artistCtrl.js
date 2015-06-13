@@ -1,5 +1,5 @@
 angular.module('LiveAPP.artist',[])
-.controller('artistCtrl', ['$scope','$http', '$location','dataFactory',artistCtrl])
+.controller('artistCtrl', ['$scope','$http', '$location','dataFactory','$routeParams',artistCtrl])
 
 .directive("rateYo", function() {
     return {
@@ -19,7 +19,13 @@ angular.module('LiveAPP.artist',[])
 });
 
 
-function artistCtrl($scope,$http, $location,dataFactory){
+function artistCtrl($scope,$http, $location,dataFactory,$routeParams){
+    
+    $scope.artistName = $routeParams.artistname
+    
+    dataFactory.getArtist($scope.artistName)
+    
+
     $scope.myRating = {
       number:3
     };
@@ -36,22 +42,7 @@ function artistCtrl($scope,$http, $location,dataFactory){
       $location.url("/review")
     }
 
-    $scope.reviews = 
-    [{user_name: "Mark Martinez",
-      venue:"Great American Music Hall",
-      review_detail:"This concert was awesome!",
-      number_stars:4
-    },
-    {user_name: "Mark Martinez",
-      venue:"Great American Music Hall",
-      review_detail:"This concert was awesome!",
-      number_stars:4
-    },
-    {user_name: "Mark Martinez",
-      venue:"Great American Music Hall",
-      review_detail:"This concert was awesome!",
-      number_stars:4
-    }] 
+
 
 
 

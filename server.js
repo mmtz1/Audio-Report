@@ -48,7 +48,7 @@ app.post('/signup',function(req,res){
   }); 
 })
 
-app.get('/artistsearch',dbhelpers.checkDbArtist)
+app.get('/artist/:artist',dbhelpers.checkDbArtist)
 
 
 app.post('/artistsearch', dbhelpers.insertDb)
