@@ -20,7 +20,8 @@ exports.checkDbArtist = function(req,res,next){
     if(rows.length != 0){
       var artistData = rows[0];
       connection.query('SELECT * FROM reviews WHERE artist_id = ?',[artistData.artist_id],function(err,result){
-       result.push(artistData) 
+       result.push(artistData)
+       
        res.send(result)
       })
     }

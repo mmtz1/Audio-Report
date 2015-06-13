@@ -4,13 +4,13 @@ angular.module('LiveAPP.main',['LiveAPP.factory'])
 function mainCtrl($scope,$http,$location,dataFactory){
   $scope.getArtist = function(artist){
     
-    dataFactory.checkDb(artist).then(function(data){
-  
-      if(data.data != "No data"){
-        dataFactory.artistinfo = data.data.pop()
-        dataFactory.artistReviews = data.data
+    dataFactory.checkDb(artist).then(function(caca){
+      console.log("THIS IS OUR DATA",caca)
+      if(caca.data != "No data"){
+        dataFactory.artistinfo = caca.data.pop()
+        dataFactory.artistReviews = caca.data
       }
-      return data.data;
+      return caca.data;
 
     }).then(function(data){
       if(data === "No data"){
