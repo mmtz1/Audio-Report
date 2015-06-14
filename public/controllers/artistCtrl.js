@@ -27,20 +27,23 @@ function artistCtrl($scope, $http, $location, dataFactory, $routeParams){
 
     $scope.$watch('artistName',function(newValue, oldValue){
       
-      dataFactory.checkDb(artist).then(function(dbData){
+      dataFactory.checkDb(newValue).then(function(dbData){
+      console.log(dbData.data[0])
       if(dbData.data != "No data"){
-          dataFactory.artistInfo = dbData.data
+        console.log("we made it")
+          $scope.artistInfo = dbData.data[0]
       } else{
           dataFactory.artistfromSpotify(newValue).then(function(spotifyRes){
               var artistMain = spotifyRes.data.artists.items[0]
               
-              $scope.artistInfo.artist_genre = artistMain.genres[0] || " "
+              $scope.artistInfo.artist_genre = artistMain.genres[0] || "Music"
               $scope.artistInfo.artist_imageurl = artistMain.images[0].url || "" 
               $scope.artistInfo.artist_name = artistMain.name || ""
               
               dataFactory.artistBio($scope.artistInfo.artist_name).then(function(data){
                 $scope.artistInfo.artist_bio = dataFactory.findWiki(data)
               }).then(function(){
+                console.log($scope.artistInfo)
                 dataFactory.postTodb($scope.artistInfo)
               })
             })
