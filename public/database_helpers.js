@@ -13,16 +13,18 @@ var connection = mysql.createConnection({
 
 
 exports.checkDbArtist = function(req,res,next){
+  console.log("MADE IT")
   var newArtist = [req.query.artistname.replace("+"," ")];
   console.log("WE ARE CHECKING THE DATABSE FOR", newArtist)
   connection.query('SELECT * FROM artist WHERE artist_name = ?', 
   newArtist, function(err, rows,fields){
     if(rows.length != 0){
-      console.log("We found that shit")
-      var artistData = rows[0];
-      connection.query('SELECT * FROM reviews WHERE artist_id = ?',[artistData.artist_id],function(err,result){
-        result.push(artistData) 
-        res.send(result)
+      
+      var artistData = [rows[0]];
+      
+      connection.query('SELECT * FROM reviews WHERE artist_id = ?',artistData[0].artist_id,function(err,result){
+        artistData.push(result) 
+        res.send(artistData)
       })
     }
     else{
@@ -54,7 +56,7 @@ exports.insertReviewDb = function(req,res,next){
     req.body.artist_id = rows[0].artist_id;
     var lastArtist = req.body.artist_name;
     delete req.body.artist_name;
-
+    console.log(req.body)
     connection.query('INSERT INTO ?? SET ?', ['reviews',req.body], function(err, result,rows){
       if (!err){
         

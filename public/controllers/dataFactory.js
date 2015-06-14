@@ -10,7 +10,7 @@ function dataFactory($http,$location){
   dataFactory.checkDb = function(artist){
      return $http({
         method: 'GET',
-        url: '/artist/' + artist,
+        url: '/artistsearch',
         params: {artistname: artist}
     })
   };
@@ -48,7 +48,7 @@ function dataFactory($http,$location){
       if(dbData.data != "No data"){
           dataFactory.artistInfo = dbData.data
       } 
-      return dbData.data
+      
     })
   }
 

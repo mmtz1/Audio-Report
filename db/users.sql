@@ -16,7 +16,6 @@ CREATE TABLE artist(
 
 CREATE TABLE reviews (
   review_id INT NOT NULL AUTO_INCREMENT,
-  
   user_name  VARCHAR(100) NOT NULL,
   venue VARCHAR(100) NOT NULL,
   number_of_stars INT NOT NULL,
