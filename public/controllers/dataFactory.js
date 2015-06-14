@@ -1,8 +1,8 @@
 angular.module('LiveAPP.factory',[])
-.factory('dataFactory', ['$http', dataFactory])
+.factory('dataFactory', ['$http','$location', dataFactory])
 
 
-function dataFactory($http){
+function dataFactory($http,$location){
   var dataFactory = {};
 
   dataFactory.artistInformation = {};
@@ -26,18 +26,14 @@ function dataFactory($http){
   }
 
   dataFactory.postTodb = function(data){
-    return $http.post('/artistsearch', {
-                                      artist_name: data.artists.items[0].name,
-                                      artist_genre: data.artists.items[0].genres[0],  
-                                      artist_imageurl: data.artists.items[0].images[0].url,
-                                      artist_bio: data.artistBio
-                                       });
+    return $http.post('/artistsearch', data);
   }
 
   dataFactory.findWiki = function(data){
-    for(var i = 0; i < data.response.biographies.length; i++){
-      if(data.response.biographies[i].site === 'wikipedia'){
-          return data.response.biographies[i].text;
+    
+    for(var i = 0; i < data.data.response.biographies.length; i++){
+      if(data.data.response.biographies[i].site === 'wikipedia'){
+          return data.data.response.biographies[i].text.match( /[^\.!\?]+[\.!\?]+/g ).splice(0,4).join("");;
       }
     }
   }
@@ -47,9 +43,34 @@ function dataFactory($http){
     return $http.post('/reviews',data)
   }
 
+  dataFactory.getArtist = function(artist){   
+    return dataFactory.checkDb(artist).then(function(dbData){
+      if(dbData.data != "No data"){
+          dataFactory.artistInfo = dbData.data
+      } 
+      
+    })
+  }
+
+
+  dataFactory.hitAPI = function(artist){
+      dataFactory.artistfromSpotify(artist).success(function(data){
+        console.log("SPOTIFY DATA",data)
+        dataFactory.artistInformation = data;
+        
+        dataFactory.artistBio(data.artists.items[0].name).success(function(data){
+          dataFactory.artistInformation.artistBio = dataFactory.findWiki(data);
+          })
+        })   
+    }
+
+
+
+
+
   dataFactory.reviewArtist = "";
 
-  dataFactory.artistinfo = "";
+  dataFactory.artistInfo = "";
   
   return dataFactory;
 

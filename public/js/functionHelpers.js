@@ -1,4 +1,4 @@
-exports.capital = function(x){
+exports.capital = function(x) {
   if (x === undefined) {
     return "";
   }
@@ -6,9 +6,10 @@ exports.capital = function(x){
   var name = [];
   var arrWord = x.split(" ");
 
-  for (var i = 0; i < arrWord.length; i++ ) {
+  for (var i = 0; i < arrWord.length; i++) {
     name.push(arrWord[i][0].toUpperCase() + arrWord[i].slice(1));
   }
   
   return name.join(" ");
+
 }
