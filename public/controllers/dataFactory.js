@@ -26,18 +26,14 @@ function dataFactory($http,$location){
   }
 
   dataFactory.postTodb = function(data){
-    return $http.post('/artistsearch', {
-                                      artist_name: data.artists.items[0].name,
-                                      artist_genre: data.artists.items[0].genres[0],  
-                                      artist_imageurl: data.artists.items[0].images[0].url,
-                                      artist_bio: data.artistBio
-                                       });
+    return $http.post('/artistsearch', data);
   }
 
   dataFactory.findWiki = function(data){
-    for(var i = 0; i < data.response.biographies.length; i++){
-      if(data.response.biographies[i].site === 'wikipedia'){
-          return data.response.biographies[i].text;
+    
+    for(var i = 0; i < data.data.response.biographies.length; i++){
+      if(data.data.response.biographies[i].site === 'wikipedia'){
+          return data.data.response.biographies[i].text.match( /[^\.!\?]+[\.!\?]+/g ).splice(0,4).join("");;
       }
     }
   }
@@ -47,48 +43,25 @@ function dataFactory($http,$location){
     return $http.post('/reviews',data)
   }
 
-  dataFactory.getArtist = function(artist){ 
-    return dataFactory.checkDb(artist).then(function(caca){
-      console.log(caca)
-      if(caca.data != "No data"){
-        dataFactory.artistinfo = caca.data.pop()
-        dataFactory.artistReviews = caca.data
-        $location.url("/artist/" + dataFactory.artistinfo.artist_name)
-      }
-      return caca.data;
-    }).then(function(data){
-      console.log("THIS SHOULD NOT BE no data",data)
-      if(data === "No data"){
-        console.log("API WAS HIT")
-        dataFactory.hitAPI(artist);
-      } else{
-        $location.url("/artist/" + dataFactory.artistinfo.artist_name)
-      }
+  dataFactory.getArtist = function(artist){   
+    return dataFactory.checkDb(artist).then(function(dbData){
+      if(dbData.data != "No data"){
+          dataFactory.artistInfo = dbData.data
+      } 
+      return dbData.data
     })
   }
 
 
   dataFactory.hitAPI = function(artist){
-      
       dataFactory.artistfromSpotify(artist).success(function(data){
         console.log("SPOTIFY DATA",data)
         dataFactory.artistInformation = data;
         
         dataFactory.artistBio(data.artists.items[0].name).success(function(data){
-          console.log("BIO DATA",data)
           dataFactory.artistInformation.artistBio = dataFactory.findWiki(data);
-
-          dataFactory.postTodb(dataFactory.artistInformation).success(function(dbData){  
-            dataFactory.checkDb(dbData).success(function(data){
-              console.log("THIS IS THE FINAL", data)
-              dataFactory.artistinfo = data[0]    
-            }).then(function(){
-              console.log("alldone getting info")
-              $location.url("/artist/" + artist)
-            })
           })
         })   
-      })
     }
 
 
@@ -97,7 +70,7 @@ function dataFactory($http,$location){
 
   dataFactory.reviewArtist = "";
 
-  dataFactory.artistinfo = "";
+  dataFactory.artistInfo = "";
   
   return dataFactory;
 

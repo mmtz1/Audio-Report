@@ -19,22 +19,47 @@ angular.module('LiveAPP.artist',[])
 });
 
 
-function artistCtrl($scope,$http, $location,dataFactory,$routeParams){
+function artistCtrl($scope, $http, $location, dataFactory, $routeParams){
     
+
     $scope.artistName = $routeParams.artistname
     
-    dataFactory.getArtist($scope.artistName)
+
+    $scope.$watch('artistName',function(newValue, oldValue){
+      
+      dataFactory.checkDb(artist).then(function(dbData){
+      if(dbData.data != "No data"){
+          dataFactory.artistInfo = dbData.data
+      } else{
+          dataFactory.artistfromSpotify(newValue).then(function(spotifyRes){
+              var artistMain = spotifyRes.data.artists.items[0]
+              
+              $scope.artistInfo.artist_genre = artistMain.genres[0] || " "
+              $scope.artistInfo.artist_imageurl = artistMain.images[0].url || "" 
+              $scope.artistInfo.artist_name = artistMain.name || ""
+              
+              dataFactory.artistBio($scope.artistInfo.artist_name).then(function(data){
+                $scope.artistInfo.artist_bio = dataFactory.findWiki(data)
+              }).then(function(){
+                dataFactory.postTodb($scope.artistInfo)
+              })
+            })
+        }
+      }
+    );
+  })
+    
     
 
     $scope.myRating = {
       number:3
     };
-
+    
     $scope.artistInfo = {
-      name: dataFactory.artistinfo.artist_name,
-      genre: dataFactory.artistinfo.artist_genre,
-      image: dataFactory.artistinfo.artist_imageurl,
-      bio: dataFactory.artistinfo.artist_bio
+      artist_name: dataFactory.artistInfo.artist_name,
+      artist_genre: dataFactory.artistInfo.artist_genre,
+      artist_imageurl: dataFactory.artistInfo.artist_imageurl,
+      artist_bio: dataFactory.artistInfo.artist_bio
     };
 
     $scope.somefunc = function(){
@@ -43,7 +68,7 @@ function artistCtrl($scope,$http, $location,dataFactory,$routeParams){
     }
 
 
-
+    
 
 
 

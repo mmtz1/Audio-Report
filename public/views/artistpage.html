@@ -2,15 +2,15 @@
 <div class="container this">
       <div class="row">
         <div class="col-sm-6">
-          <div><h1>{{artistInfo.name}}</h1></div>
+          <div><h1>{{artistInfo.artist_name}}</h1></div>
           <div rate-yo id='stars' rating="myRating" class="col-sm-4"></div>
           <div id='reviews'>23 Reviews</div>
-          <div><h2>{{artistInfo.genre}}</h2></div>
-          <div><p>{{artistInfo.bio}}</p></div>
+          <div><h2>{{artistInfo.artist_genre}}</h2></div>
+          <div><p>{{artistInfo.artist_bio}}</p></div>
           <div><button type="button" class="btn btn-primary" ng-click="somefunc()">Submit a Review</button></div>
         </div>
         <div class="col-sm-6 reviews">
-          <div><img class="artistpageimage" src={{artistInfo.image}}></div>
+          <div><img class="artistpageimage" src={{artistInfo.artist_imageurl}}></div>
         </div>
       </div>
       
