@@ -40,7 +40,7 @@ function reviewCtrl($scope,$http,dataFactory,$location){
     $scope.review.number_of_stars = $scope.therating.number.rating;
     
     dataFactory.postReview($scope.review).success(function(lastArtist){
-    
+      $location.url('/artist/' + dataFactory.reviewArtist)
     })
   }
 
