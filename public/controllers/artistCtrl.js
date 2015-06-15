@@ -12,7 +12,7 @@ angular.module('LiveAPP.artist',[])
             
             var $rateYo = $(ele).rateYo({});
             $rateYo.on("rateyo.change", function (e, data) {
-                scope.rating.number = data
+                scope.rating.number = data;
               });  
         }
     };
@@ -21,27 +21,23 @@ angular.module('LiveAPP.artist',[])
 
 function artistCtrl($scope, $http, $location, dataFactory, $routeParams){
     
-
-    $scope.artistName = $routeParams.artistname
-    
+    $scope.artistName = $routeParams.artistname;
 
     $scope.$watch('artistName',function(newValue, oldValue){
-      
       dataFactory.checkDb(newValue).then(function(dbData){
-        console.log("THIS IS THE DATA",dbData.data)
         if(dbData.data != "No data"){
-          $scope.artistInfo = dbData.data[0]
-          $scope.reviews = dbData.data[1]
+          $scope.artistInfo = dbData.data[0];
+          $scope.reviews = dbData.data[1];
         } else{
           dataFactory.artistfromSpotify(newValue).then(function(spotifyRes){
-              var artistMain = spotifyRes.data.artists.items[0]
+              var artistMain = spotifyRes.data.artists.items[0];
               
-              $scope.artistInfo.artist_genre = artistMain.genres[0] || "Music"
-              $scope.artistInfo.artist_imageurl = artistMain.images[0].url || "" 
-              $scope.artistInfo.artist_name = artistMain.name || ""
+              $scope.artistInfo.artist_genre = artistMain.genres[0] || "Music";
+              $scope.artistInfo.artist_imageurl = artistMain.images[0].url || "" ''
+              $scope.artistInfo.artist_name = artistMain.name || "";
               
                 dataFactory.artistBio($scope.artistInfo.artist_name).then(function(data){
-                  $scope.artistInfo.artist_bio = dataFactory.findWiki(data)
+                  $scope.artistInfo.artist_bio = dataFactory.findWiki(data);
                 }).then(function(){
                   dataFactory.postTodb($scope.artistInfo)
                 })
@@ -51,8 +47,6 @@ function artistCtrl($scope, $http, $location, dataFactory, $routeParams){
       );
     });
     
-    
-
     $scope.myRating = {
       number:3
     };
@@ -67,14 +61,9 @@ function artistCtrl($scope, $http, $location, dataFactory, $routeParams){
     $scope.somefunc = function(){
       dataFactory.reviewArtist = $scope.artistInfo.artist_name
       $location.url("/review")
-    }
+    };
 
-    $scope.reviews = ""
-
-
-    
-
-
+    $scope.reviews = "";
 
 }
 

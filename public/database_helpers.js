@@ -13,13 +13,12 @@ var connection = mysql.createConnection({
 
 
 exports.checkDbArtist = function(req,res,next){
-  console.log("MADE IT")
+  
   var newArtist = [req.query.artistname.replace("+"," ")];
-  console.log("WE ARE CHECKING THE DATABSE FOR", newArtist)
+  
   connection.query('SELECT * FROM artist WHERE artist_name = ?', 
   newArtist, function(err, rows,fields){
     if(rows.length != 0){
-      
       var artistData = [rows[0]];
       
       connection.query('SELECT * FROM reviews WHERE artist_id = ?',artistData[0].artist_id,function(err,result){
@@ -42,7 +41,7 @@ exports.insertDb = function(req,res,next){
   console.log(artistName)
   connection.query('INSERT INTO ?? SET ?', ['artist',{artist_name: artistName,artist_genre: artistGenre, artist_imageurl:artistImg,artist_bio:artistBio}], function(err, result,rows){
       if (!err){
-        res.send(artistName)
+        res.send(artistName);
       } else{
         console.log('Error while performing Query.');
       }

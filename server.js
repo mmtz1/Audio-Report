@@ -50,15 +50,9 @@ app.post('/signup',function(req,res){
 
 app.get('/artistsearch',dbhelpers.checkDbArtist)
 
-
 app.post('/artistsearch', dbhelpers.insertDb)
 
 app.post('/reviews',dbhelpers.insertReviewDb)
-
-// REQUEST BODY { artist_name: 'Kid Cudi',
-//   artist_genre: 'alternative hip hop',
-//   artist_img: 'https://i.scdn.co/image/56ef893e66fe4c2f6a6f511a5d0ce280521896f8' }
-
 
 
 
