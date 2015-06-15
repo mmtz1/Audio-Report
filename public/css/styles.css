@@ -45,6 +45,7 @@ hr {
 .pure-menu-horizontal{
   background-color:#AAAAAA;
 }
+
 h1 {
   font-family: 'Brush Script MT', cursive;
   font-size: 75px;
@@ -116,6 +117,21 @@ div.container.signin{
 .reviewcontainer{
   position:relative;
   top:100px;
-  
   left:50%;
 }
+
+.reviewicon {
+  border:1px;
+  background-color: gray;
+  padding:10px;
+  
+  border-radius: 10px;
+
+}
+
+
+.divreviewimage{
+  float: left;  
+  margin-right:10px; 
+}
+
