@@ -1,4 +1,4 @@
-# Live - Yelp for Concerts(In Progress)
+# Live - Yelp for Concerts (In Progress)
 -Built using Angular, Express, MySQL
 
 -Need to work on authentication and front end.
