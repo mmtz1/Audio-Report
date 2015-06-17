@@ -1,8 +1,8 @@
 angular.module('LiveAPP.factory',[])
-.factory('dataFactory', ['$http','$location', dataFactory])
+.factory('dataFactory', ['$http','$location', '$rootScope',dataFactory])
 
 
-function dataFactory($http,$location){
+function dataFactory($http,$location,$rootScope){
   var dataFactory = {};
 
   dataFactory.artistInformation = {};
@@ -17,22 +17,33 @@ function dataFactory($http,$location){
 
 
 
-  dataFactory.artistfromSpotify = function(artist){
-    return $http.get("https://api.spotify.com/v1/search?q=" + artist + "&type=artist");
+  dataFactory.artistInfoAPIs = function(artist){
+    return $http.get("https://api.spotify.com/v1/search?q=" + artist + "&type=artist").success(function(data){
+        dataFactory.artistInfo.artist_genre = data.artists.items[0].genres[0] || "";
+        dataFactory.artistInfo.artist_imageurl = data.artists.items[0].images[0].url || "";
+        dataFactory.artistInfo.artist_name = data.artists.items[0].name || "";
+
+        return $http.get("http://developer.echonest.com/api/v4/artist/biographies?api_key=T0OOMWQVXVAFNUL14&name=" + artist).success(function(data){
+          dataFactory.artistInfo.artist_bio = dataFactory.findWiki(data);
+          
+          dataFactory.postTodb(dataFactory.artistInfo).success(function(){
+            $rootScope.$broadcast('artist:updated',dataFactory.artistInfo);
+          })
+        });
+    })
   };
 
-  dataFactory.artistBio = function(artist){
-    return $http.get("http://developer.echonest.com/api/v4/artist/biographies?api_key=T0OOMWQVXVAFNUL14&name=" + artist);
-  };
 
   dataFactory.postTodb = function(data){
+    console.log("THIS IS THE DATA WE ARE POSTING",data)
+
     return $http.post('/artistsearch', data);
   };
 
   dataFactory.findWiki = function(data){
-    for(var i = 0; i < data.data.response.biographies.length; i++){
-      if(data.data.response.biographies[i].site === 'wikipedia'){
-          return data.data.response.biographies[i].text.match( /[^\.!\?]+[\.!\?]+/g ).splice(0,4).join("");
+    for(var i = 0; i < data.response.biographies.length; i++){
+      if(data.response.biographies[i].site === 'wikipedia'){
+          return data.response.biographies[i].text.match( /[^\.!\?]+[\.!\?]+/g ).splice(0,4).join("");
       }
     }
   };
@@ -42,33 +53,14 @@ function dataFactory($http,$location){
     return $http.post('/reviews',data);
   };
 
-  dataFactory.getArtist = function(artist){   
-    return dataFactory.checkDb(artist).then(function(dbData){
-      if(dbData.data != "No data"){
-          dataFactory.artistInfo = dbData.data;
-      } 
-      
-    });
-  };
-
-
-  dataFactory.hitAPI = function(artist){
-      dataFactory.artistfromSpotify(artist).success(function(data){
-        dataFactory.artistInformation = data;
-        
-        dataFactory.artistBio(data.artists.items[0].name).success(function(data){
-          dataFactory.artistInformation.artistBio = dataFactory.findWiki(data);
-          })
-        })   
-    };
-
-
-
-
-
   dataFactory.reviewArtist = "";
 
-  dataFactory.artistInfo = "";
+  dataFactory.artistInfo = {
+    artist_name: "",
+    artist_genre: "",
+    artist_imageurl: "",
+    artist_bio: "",
+  };
   
   return dataFactory;
 
