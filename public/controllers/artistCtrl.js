@@ -28,7 +28,6 @@ function artistCtrl($scope, $http, $location, dataFactory, $routeParams){
         if(dbData.data != "No data"){
           $scope.artistInfo = dbData.data[0];
           $scope.reviews = dbData.data[1];
-          console.log($scope.reviews)
         } else{
           dataFactory.artistfromSpotify(newValue).then(function(spotifyRes){
               var artistMain = spotifyRes.data.artists.items[0];

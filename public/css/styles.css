@@ -76,7 +76,6 @@ div.container.this{
   right: 0; 
 }
 
-
 .artistpageimage{
   border-radius: 25px;
   height:100%;
@@ -110,7 +109,6 @@ div.container.signin{
 .divreviewimage{
   float: left;  
   margin-right:10px; 
-
 }
 
 .reviews{
@@ -134,7 +132,8 @@ div.container.signin{
 }
 .fullhome{
   background-color: #FEF1D9;
-  height: 50%;
+  height: 100%;
+  margin-top: -5%;
 }
 
 .navbar-custom {
@@ -144,4 +143,46 @@ div.container.signin{
 
 .custom-search-form{
   margin-top:7.5px;
+}
+.bottom{
+  margin-top:-5%;
+}
+
+
+.iconcontainer.first{
+  display: inline-block;
+  width:35%;
+  height:50%;
+  margin-left:15%;
+}
+
+.iconcontainer.second{
+  display: inline-block;
+  width:35%;
+  height:50%;
+  margin-right:15%;
+
+}
+
+
+
+.iconcontainer img {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  height:100%;
+  width:50%;
+}
+
+p.front{
+  padding-right: 10%;
+  padding-left: 20%;
+  
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+}
+
+.col-lg-3{
+  margin-left:35%;
 }

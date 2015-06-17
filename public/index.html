@@ -15,7 +15,7 @@
       <nav ng-controller='mainCtrl' class="navbar navbar-custom navbar-static-top">
         <div class="container-fluid">
           <div class="navbar-header">
-            <a class="navbar-brand">Live</a>
+            <a class="navbar-brand" href="/#/">Live</a>
            
            
 <!--           <form class="navbar-form navbar-right" role="search" ng-submit=getArtist(artist)>
@@ -27,17 +27,23 @@
           <div class="container">
             <div class="row">
               <div class="col-lg-3">
-                      <div class="input-group custom-search-form">
-                        <input type="text" class="form-control" ng-model="artist">
-                        <span class="input-group-btn">
-                        <button ng-click=getArtist(artist) class="btn btn-default" type="submit">
-                        <span class="glyphicon glyphicon-search"></span>
-                       </button>
-                       </span>
-                       </div><!-- /input-group -->
+                <form role="search">
+                  <div class="input-group custom-search-form">
+                    <input type="text" class="form-control" ng-model="artist" required="required" aria-required="true" />
+                      <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit" ng-click=getArtist(artist)>
+                      <span class="glyphicon glyphicon-search"></span>
+                    </button>
+                    </span>
                   </div>
+                </form>
+              </div>
             </div>
           </div>
+
+
+
+
           </div>
         </div>
       </nav>
