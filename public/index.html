@@ -8,22 +8,46 @@
     <link rel="stylesheet" type="text/css" href="/css/styles.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <link rel="stylesheet" href="./lib/jquery.rateyo.css"/>
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
   </head>
   <body ng-app='LiveAPP'>
-    <div class="header" ng-controller='mainCtrl'>
-        <div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed">
-            <a class="pure-menu-heading">Live</a>
-            <ul class="pure-menu-list">
-              <li class="pure-menu-item pure-menu-selected center">
-                  <form class="pure-form" ng-submit="getArtist(artist)">
-                        <input type="text" placeholder="Artist" name="artist" ng-model="artist" >
-                        <button type="submit" class="pure-button pure-button-primary">   Search</button>
-                  </form>
-              </li> 
-            </ul>
-            <a class="pure-button sign-up" href="/#/signup">Sign Up</a>
+    <div class="header" >
+      <nav ng-controller='mainCtrl' class="navbar navbar-custom navbar-static-top">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="/#/">Live</a>
+           
+           
+<!--           <form class="navbar-form navbar-right" role="search" ng-submit=getArtist(artist)>
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Artist Name" ng-model="artist">
+            </div>
+            <button type="submit" class="btn btn-default">Search</button>
+          </form> -->
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-3">
+                <form role="search">
+                  <div class="input-group custom-search-form">
+                    <input type="text" class="form-control" ng-model="artist" required="required" aria-required="true" />
+                      <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit" ng-click=getArtist(artist)>
+                      <span class="glyphicon glyphicon-search"></span>
+                    </button>
+                    </span>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+
+
+
+          </div>
         </div>
-    </div>
+      </nav>
+   
     <div ng-view></div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>

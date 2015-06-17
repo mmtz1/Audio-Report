@@ -7,7 +7,7 @@
           <div id='reviews'>23 Reviews</div>
           <div><h2>{{artistInfo.artist_genre}}</h2></div>
           <div><p>{{artistInfo.artist_bio}}</p></div>
-          <div><button type="button" class="btn btn-primary" ng-click="somefunc()">Submit a Review</button></div>
+          <div><button type="button" class="btn btn-primary" ng-click="somefunc()">Submit a Review for {{artistInfo.artist_name}} </button></div>
         </div>
         <div class="col-sm-6 reviews">
           <div><img class="artistpageimage" src={{artistInfo.artist_imageurl}}></div>
@@ -18,10 +18,19 @@
 
 <div><h1 class='reviewheader'>Reviews</h1><hr style="width:95%;height:1px;border:none;color:#333;background-color:#333;"/></div>
 
-<div ng-repeat="review in reviews"> 
-  <div>{{review.user_name}}</div>
-  <div>{{review.venue}}</div>
-  <div>{{review.review_detail}}</div>
-  <div>{{review.number_stars}}</div>
+<div class='reviews' ng-repeat="review in reviews"> 
+  <div class='divreviewimage'><img class='reviewicon' src="https://openclipart.org/download/202776/pawn.svg" height="70" width="70"></div>
+
+  <div class="reviewinfo">
+    <h4>{{review.user_name}}</h4>
+    <h5>{{review.venue}}</h5>
+    <div>{{review.number_of_stars}}</div>
+  </div>
+
+  <div>{{review.review_details}}</div>
+  <hr style="width:100%;height:1px;border:none;color:#333;background-color:#333;"/>
+
 </div>
+
+
 

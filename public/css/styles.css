@@ -7,24 +7,6 @@ hr {
     background-color: #333; /* Modern Browsers */
 }
 
-.nicetext {
-  border: 1px #FFFAFA ;
-  position:relative;
-  top:70px;
-  width: 500px;
-  height: 300px;
-  text-align: center;
-  border-radius: 10px;
-  background: url('../img/armitage-concert-bw.jpg');
-  display: block;
-  /*margin-left: auto;*/
-  margin-right: auto;
-  background-size: 1000px 400px ;
-  margin-left:10%;
-  
-
-}
-
 .boxedsignup{
   border: 1px #FFFAFA ;
   position:relative;
@@ -37,14 +19,12 @@ hr {
   margin-left: auto;
   margin-right: auto;
   background-size: 1000px 400px ;
-  /*bottom: -300px;*/
-  
-
 }
 
 .pure-menu-horizontal{
   background-color:#AAAAAA;
 }
+
 h1 {
   font-family: 'Brush Script MT', cursive;
   font-size: 75px;
@@ -96,7 +76,6 @@ div.container.this{
   right: 0; 
 }
 
-
 .artistpageimage{
   border-radius: 25px;
   height:100%;
@@ -116,6 +95,94 @@ div.container.signin{
 .reviewcontainer{
   position:relative;
   top:100px;
-  
   left:50%;
+}
+
+.reviewicon {
+  border:1px;
+  background-color: gray;
+  padding:10px;
+  border-radius: 10px;
+}
+
+
+.divreviewimage{
+  float: left;  
+  margin-right:10px; 
+}
+
+.reviews{
+  margin-left:25px;
+  margin-right:25px;
+}
+
+
+.concertimage{
+  margin-top:-200px;
+}
+
+.nicetext{
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  text-align: center;
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-top: 10%;
+  margin-bottom: 10%;
+}
+.fullhome{
+  background-color: #FEF1D9;
+  height: 100%;
+  margin-top: -5%;
+}
+
+.navbar-custom {
+  background-color:#2C384D;
+  border-color: #E7E7E7;
+}
+
+.custom-search-form{
+  margin-top:7.5px;
+}
+.bottom{
+  margin-top:-5%;
+}
+
+
+.iconcontainer.first{
+  display: inline-block;
+  width:35%;
+  height:50%;
+  margin-left:15%;
+}
+
+.iconcontainer.second{
+  display: inline-block;
+  width:35%;
+  height:50%;
+  margin-right:15%;
+
+}
+
+
+
+.iconcontainer img {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  height:100%;
+  width:50%;
+}
+
+p.front{
+  padding-right: 10%;
+  padding-left: 20%;
+  
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+}
+
+.col-lg-3{
+  margin-left:35%;
 }
