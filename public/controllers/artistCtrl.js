@@ -30,15 +30,13 @@ function artistCtrl($scope, $http, $location, dataFactory, $routeParams){
           $scope.reviews = dbData.data[1];
         } else{
           dataFactory.artistInfoAPIs(newValue)
-
         }
-    })
+      })
     });
     
-    $scope.$on('artist:updated', function(event,data){
-      console.log("THERE WAS A CHANGE HERE'S THERE DATA",data)
-      $scope.artistInfo = data
-    })
+    $scope.$on('artist:updated', function(event, data){
+      $scope.artistInfo = data;
+    });
 
 
     $scope.myRating = {
@@ -52,7 +50,7 @@ function artistCtrl($scope, $http, $location, dataFactory, $routeParams){
       artist_bio: dataFactory.artistInfo.artist_bio
     };
 
-    $scope.somefunc = function(){
+    $scope.reviewArtist = function(){
       dataFactory.reviewArtist = $scope.artistInfo.artist_name
       $location.url("/review")
     };

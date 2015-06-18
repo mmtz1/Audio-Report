@@ -33,15 +33,9 @@ exports.checkDbArtist = function(req,res,next){
 }
 
 exports.insertDb = function(req,res,next){
-  var artistName = req.body.artist_name || "";
-  var artistGenre = javascripthelp.capital(req.body.artist_genre) || "";
-  var artistImg = req.body.artist_imageurl || "";
-  var artistBio = req.body.artist_bio.match( /[^\.!\?]+[\.!\?]+/g ).splice(0,4).join("") || "";
-  
-  console.log(artistName)
-  connection.query('INSERT INTO ?? SET ?', ['artist',{artist_name: artistName,artist_genre: artistGenre, artist_imageurl:artistImg,artist_bio:artistBio}], function(err, result,rows){
+  connection.query('INSERT INTO ?? SET ?', ['artist',req.body], function(err, result,rows){
       if (!err){
-        res.send(artistName);
+        res.send(req.body.artist_name);
       } else{
         console.log('Error while performing Query.');
       }
@@ -50,15 +44,13 @@ exports.insertDb = function(req,res,next){
 
 
 exports.insertReviewDb = function(req,res,next){
-  
   connection.query('SELECT artist_id FROM artist WHERE artist_name = ?',[req.body.artist_name],function(err,rows){
     req.body.artist_id = rows[0].artist_id;
     var lastArtist = req.body.artist_name;
     delete req.body.artist_name;
-    console.log(req.body)
+    
     connection.query('INSERT INTO ?? SET ?', ['reviews',req.body], function(err, result,rows){
       if (!err){
-        
         res.send(lastArtist);
       } else{
         console.log('Error while performing Query.');
