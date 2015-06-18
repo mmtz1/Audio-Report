@@ -11,14 +11,13 @@ var javascripthelp = require('./js/functionHelpers.js')
 //     multipleStatements: true
 // });
 
+// var connection = mysql.createConnection({
+//   host:"us-cdbr-iron-east-02.cleardb.net",
+//   user:"b00955d08fef04",
+//   password:"9bd21f2d",
+//   database:"heroku_fdeff37a1f83aa6"
+// });
 
-
-var connection = mysql.createConnection({
-  host:"us-cdbr-iron-east-02.cleardb.net",
-  user:"b00955d08fef04",
-  password:"9bd21f2d",
-  database:"heroku_fdeff37a1f83aa6"
-});
 exports.checkDbArtist = function(req,res,next){
   
   var newArtist = [req.query.artistname.replace("+"," ")];
