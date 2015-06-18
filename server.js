@@ -14,21 +14,21 @@ app.use(express.static(__dirname + '/public/lib'));
 app.use(bodyParser())
 
 
-var db_config = mysql.createConnection({
-  host:"us-cdbr-iron-east-02.cleardb.net",
-  user:"b00955d08fef04",
-  password:"9bd21f2d",
-  database:"heroku_fdeff37a1f83aa6"
-});
-
-// var connection = mysql.createConnection({
-//     host        : 'localhost',
-//     port        :  3306,
-//     user        : 'root',
-//     password    : '',
-//     database    : 'live',
-//     multipleStatements: true
+// var db_config = mysql.createConnection({
+//   host:"us-cdbr-iron-east-02.cleardb.net",
+//   user:"b00955d08fef04",
+//   password:"9bd21f2d",
+//   database:"heroku_fdeff37a1f83aa6"
 // });
+
+var db_config = mysql.createConnection({
+    host        : 'localhost',
+    port        :  3306,
+    user        : 'root',
+    password    : '',
+    database    : 'live',
+    multipleStatements: true
+});
 
 
 var connection;
@@ -55,22 +55,6 @@ function handleDisconnect() {
 }
 
 handleDisconnect();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
