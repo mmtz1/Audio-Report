@@ -21,6 +21,15 @@ var connection = mysql.createConnection({
   database:"heroku_fdeff37a1f83aa6"
 });
 
+// var connection = mysql.createConnection({
+//     host        : 'localhost',
+//     port        :  3306,
+//     user        : 'root',
+//     password    : '',
+//     database    : 'live',
+//     multipleStatements: true
+// });
+
 
 connection.connect(function(err){
 if(!err) {
@@ -51,8 +60,6 @@ app.get('/artistsearch',dbhelpers.checkDbArtist)
 app.post('/artistsearch', dbhelpers.insertDb)
 
 app.post('/reviews',dbhelpers.insertReviewDb)
-
-
 
 
 app.listen(process.env.PORT || 3000);
