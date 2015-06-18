@@ -101,12 +101,13 @@ h1 {
 
 div.container.this{
   /*position:relative;*/
-  margin-top:40px;
+  margin-top:-2%;
   right:50%;
   margin-left: 15px;
   margin-right: auto;
   left: 0;
   right: 0; 
+
 }
 
 .artistpageimage{
@@ -114,6 +115,7 @@ div.container.this{
   height:100%;
   width:100%;
   float:right;
+  margin-top:4.5%;
 }
 
 div.container.signin{
@@ -216,6 +218,19 @@ p.front{
   font-size: 20px;
 }
 
+div#stars{
+  padding:0; !important
+  float:left;
+}
+#reviews{
+  display: inline-block;
+  margin-top: 6px;
+  margin-left: 10px;
+}
 .col-lg-3{
   margin-left:35%;
+}
+
+div.row.artistinfo{
+  width:120%;
 }
