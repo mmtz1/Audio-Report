@@ -5,16 +5,16 @@ angular.module('LiveAPP.artist',[])
     return {
         restrict: "A",
         scope: {
-            rating: "="
+            artistName: "="
         },
         template: "<div id='rateYo'></div>",
         link: function( scope, ele, attrs ) {
-            
-            var $rateYo = $(ele).rateYo({});
-            $rateYo.on("rateyo.change", function (e, data) {
-                
-                scope.rating.number = data;
-              });  
+            console.log("THIS",scope.$parent.reviews)
+            var $rateYo = $(ele).rateYo({
+              rating:0
+              
+            });
+ 
         }
     };
 });
@@ -34,6 +34,8 @@ function artistCtrl($scope, $http, $location, dataFactory, $routeParams){
         if(dbData.data != "No data"){
           $scope.artistInfo = dbData.data[0];
           $scope.reviews = dbData.data[1];
+          $scope.ratingInfo = dataFactory.avgReview($scope.reviews)
+          
         } else{
           dataFactory.artistInfoAPIs(newValue)
         }
@@ -44,10 +46,9 @@ function artistCtrl($scope, $http, $location, dataFactory, $routeParams){
       $scope.artistInfo = data;
     });
 
+    
 
-    $scope.myRating = {
-      number:3
-    };
+    $scope.ratingInfo = ""
     
     $scope.artistInfo = {
       artist_name: dataFactory.artistInfo.artist_name,
