@@ -19,10 +19,26 @@ function dataFactory($http,$location,$rootScope){
 
   dataFactory.artistInfoAPIs = function(artist){
     return $http.get("https://api.spotify.com/v1/search?q=" + artist + "&type=artist").success(function(data){
-        dataFactory.artistInfo.artist_genre = data.artists.items[0].genres[0] || "";
+      var capitalLetter = function(genre){
+          if(genre === ""){
+              return "";
+          }
+
+          var wordArr = genre.split(" ");
+          var newWord = [];
+
+          for(var k in wordArr){
+              var capital = wordArr[k].charAt(0).toUpperCase() + wordArr[k].slice(1)
+              newWord.push(capital)
+          }
+
+          return newWord.join(" ")
+      }
+
+        dataFactory.artistInfo.artist_genre = capitalLetter(data.artists.items[0].genres[0]) || "";
         dataFactory.artistInfo.artist_imageurl = data.artists.items[0].images[0].url || "";
         dataFactory.artistInfo.artist_name = data.artists.items[0].name || "";
-
+        
         return $http.get("https://developer.echonest.com/api/v4/artist/biographies?api_key=T0OOMWQVXVAFNUL14&name=" + artist).success(function(data){
           dataFactory.artistInfo.artist_bio = dataFactory.findWiki(data);
           

@@ -12,11 +12,17 @@ angular.module('LiveAPP.artist',[])
             
             var $rateYo = $(ele).rateYo({});
             $rateYo.on("rateyo.change", function (e, data) {
+                
                 scope.rating.number = data;
               });  
         }
     };
 });
+
+
+
+
+
 
 
 function artistCtrl($scope, $http, $location, dataFactory, $routeParams){

@@ -16,7 +16,21 @@ angular.module('liveAPP.review',['LiveAPP.factory'])
               });  
         }
     };
-});
+})
+
+.directive("datepicker", function() {
+    return {
+        restrict: "E",
+        template: '<input type="text" id="datepicker" class="form-control review">',
+        link: function( scope, ele, attrs ){
+          
+          $('#datepicker').datepicker();
+        }
+  }      
+})
+
+
+
 
 
 function reviewCtrl($scope,$http,dataFactory,$location){
@@ -37,6 +51,7 @@ function reviewCtrl($scope,$http,dataFactory,$location){
 
   
   $scope.reviewSubmission = function(review){
+    console.log(review)
     $scope.review.number_of_stars = $scope.therating.number.rating;
     
     dataFactory.postReview($scope.review).success(function(lastArtist){

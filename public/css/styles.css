@@ -112,7 +112,7 @@ div.container.this{
 
 .artistpageimage{
   border-radius: 25px;
-  height:100%;
+
   width:100%;
   float:right;
   margin-top:4.5%;
@@ -232,5 +232,18 @@ div#stars{
 }
 
 div.row.artistinfo{
-  width:120%;
+  width:107%;
+}
+
+div.col-sm-6{
+  margin-top:10px;
+}
+.navbar-brand{
+font-family: 'Gravitas One', cursive;
+color:white;
+background-image: none;
+}
+
+.form-control.review{
+  width:25%;
 }
