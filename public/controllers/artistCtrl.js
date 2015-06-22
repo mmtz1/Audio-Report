@@ -35,6 +35,7 @@ function artistCtrl($scope, $http, $location, dataFactory, $routeParams){
           $scope.artistInfo = dbData.data[0];
           $scope.reviews = dbData.data[1];
           $scope.ratingInfo = dataFactory.avgReview($scope.reviews)
+
           
         } else{
           dataFactory.artistInfoAPIs(newValue)
