@@ -19,7 +19,7 @@ function signUpCtrl($scope,$http){
       }).success(function(data){
         console.log("User posted to the database")
       });
-};
+  };
 }
 
 

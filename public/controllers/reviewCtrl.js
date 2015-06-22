@@ -25,18 +25,13 @@ angular.module('liveAPP.review',['LiveAPP.factory'])
 
 .directive("datepicker", function() {
     return {
-        restrict: "E",
-        template: '<input type="text" id="datepicker" class="form-control review">',
-        link: function( scope, ele, attrs ){
-          
-          $('#datepicker').datepicker();
-        }
+      restrict: "E",
+      template: '<input type="text" id="datepicker" class="form-control review">',
+      link: function( scope, ele, attrs ){
+        $('#datepicker').datepicker();
+      }
   }      
 })
-
-
-
-
 
 function reviewCtrl($scope,$http,dataFactory,$location){
   $scope.rating = "";
@@ -49,19 +44,15 @@ function reviewCtrl($scope,$http,dataFactory,$location){
     venue: "",
     artist_name: dataFactory.reviewArtist,
     number_of_stars: ""
-  }
+  };
 
   
   $scope.reviewSubmission = function(review){
-    
     $scope.review.number_of_stars = $scope.rating;
-    console.log($scope.review)
     dataFactory.postReview($scope.review).success(function(lastArtist){
-      console.log("lastArtist",lastArtist)
-      $location.url('/artist/' + dataFactory.reviewArtist)
+      $location.url('/artist/' + dataFactory.reviewArtist);
     })
-  }
-
+  };
   
 }
 

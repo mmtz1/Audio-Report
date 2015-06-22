@@ -4,7 +4,6 @@ angular.module('LiveAPP.main',['LiveAPP.factory'])
 function mainCtrl($scope,$http,$location,dataFactory){
 
   $scope.getArtist = function(artist){
- 
     $location.url("/artist/" + artist);
   }
 
