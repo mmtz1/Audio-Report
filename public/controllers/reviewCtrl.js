@@ -17,7 +17,7 @@ angular.module('liveAPP.review',['LiveAPP.factory'])
             
 
             $rateYo.on("rateyo.change", function (e, data) {
-              scope.$parent.rating = $rateYo.rateYo("rating")
+              scope.$parent.rating = $rateYo.rateYo("rating");
               });  
         }
     };

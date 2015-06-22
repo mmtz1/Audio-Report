@@ -1,5 +1,5 @@
 angular.module('LiveAPP.artist',[])
-.controller('artistCtrl', ['$scope','$http', '$location','dataFactory','$routeParams',artistCtrl])
+.controller('artistCtrl', ['$scope', '$http', '$location', 'dataFactory', '$routeParams', artistCtrl])
 
 .directive("rateYo", function() {
     return {
@@ -9,10 +9,8 @@ angular.module('LiveAPP.artist',[])
         },
         template: "<div id='rateYo'></div>",
         link: function( scope, ele, attrs ) {
-            console.log("THIS",scope.$parent.reviews)
             var $rateYo = $(ele).rateYo({
               rating:0
-              
             });
  
         }
@@ -34,11 +32,11 @@ function artistCtrl($scope, $http, $location, dataFactory, $routeParams){
         if(dbData.data != "No data"){
           $scope.artistInfo = dbData.data[0];
           $scope.reviews = dbData.data[1];
-          $scope.ratingInfo = dataFactory.avgReview($scope.reviews)
+          $scope.ratingInfo = dataFactory.avgReview($scope.reviews);
 
           
         } else{
-          dataFactory.artistInfoAPIs(newValue)
+          dataFactory.artistInfoAPIs(newValue);
         }
       })
     });
@@ -59,8 +57,8 @@ function artistCtrl($scope, $http, $location, dataFactory, $routeParams){
     };
 
     $scope.reviewArtist = function(){
-      dataFactory.reviewArtist = $scope.artistInfo.artist_name
-      $location.url("/review")
+      dataFactory.reviewArtist = $scope.artistInfo.artist_name;
+      $location.url("/review");
     };
 
     $scope.reviews = "";

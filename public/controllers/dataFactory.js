@@ -42,7 +42,6 @@ function dataFactory($http, $location, $rootScope){
   };
 
   dataFactory.capitalLetter = function(genre){
-    console.log(genre)
     if(genre == 'undefined'){
       return "";
     }
