@@ -27,7 +27,8 @@ function dataFactory($http, $location, $rootScope){
 
   dataFactory.artistInfoAPIs = function(artist){
     return $http.get("https://api.spotify.com/v1/search?q=" + artist + "&type=artist").success(function(data){
-        dataFactory.artistInfo.artist_genre = dataFactory.capitalLetter(data.artists.items[0].genres[0] || "");
+        var genre = data.artists.items[0].genres[0] || ""
+        dataFactory.artistInfo.artist_genre = dataFactory.capitalLetter(genre);
         dataFactory.artistInfo.artist_imageurl = data.artists.items[0].images[0].url || "";
         dataFactory.artistInfo.artist_name = data.artists.items[0].name || "";
         
@@ -42,7 +43,7 @@ function dataFactory($http, $location, $rootScope){
 
   dataFactory.capitalLetter = function(genre){
     console.log(genre)
-    if(genre === undefined){
+    if(genre == 'undefined'){
       return "";
     }
 
