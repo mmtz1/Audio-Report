@@ -54,11 +54,11 @@ function handleDisconnect() {
 handleDisconnect();
 
 connection.connect(function(err){
-if(!err) {
-    console.log("Database is connected ... \n\n");  
-} else {
-    console.log("Error connecting database ... \n\n");  
-}
+  if(!err) {
+      console.log("Database is connected ... \n\n");  
+  } else {
+      console.log("Error connecting database ... \n\n");  
+  }
 });
 
 
@@ -75,13 +75,13 @@ app.post('/signup',function(req,res){
   }); 
 })
 
-app.get('/artistsearch',dbhelpers.checkDbArtist)
+app.get('/artistsearch',dbhelpers.checkDbArtist);
 
-app.post('/artistsearch', dbhelpers.insertDb)
+app.post('/artistsearch', dbhelpers.insertDb);
 
-app.post('/reviews', dbhelpers.insertReviewDb)
+app.post('/reviews', dbhelpers.insertReviewDb);
 
 
 app.listen(process.env.PORT || 3000);
 
-console.log("Listening at 3000")
+

@@ -6,7 +6,7 @@ function signUpCtrl($scope,$http){
   $scope.user = {
     email:'',
     password:''
-  }
+  };
   
   $scope.postreq = function(user){
     $http({
