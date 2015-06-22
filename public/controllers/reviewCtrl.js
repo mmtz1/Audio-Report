@@ -1,18 +1,23 @@
 angular.module('liveAPP.review',['LiveAPP.factory'])
 .controller('reviewCtrl', ['$scope','$http','dataFactory','$location',reviewCtrl])
 
-.directive("rateYoReview", function() {
+.directive("rating", function() {
     return {
-        restrict: "A",
+        restrict: "E",
         scope: {
             rating: "="
         },
         template: "<div id='rateYo'></div>",
         link: function( scope, ele, attrs ) {
-            var $rateYo = $(ele).rateYo({});
+            scope.$parent.rating
+            var $rateYo = $(ele).rateYo({
+              halfStar: true,
+              rating:0
+            });
+            
+
             $rateYo.on("rateyo.change", function (e, data) {
-                scope.rating.number = data
-                $scope.rating = data
+              scope.$parent.rating = $rateYo.rateYo("rating")
               });  
         }
     };
@@ -46,15 +51,13 @@ function reviewCtrl($scope,$http,dataFactory,$location){
     number_of_stars: ""
   }
 
-
-  
-
   
   $scope.reviewSubmission = function(review){
-    console.log(review)
-    $scope.review.number_of_stars = $scope.therating.number.rating;
     
+    $scope.review.number_of_stars = $scope.rating;
+    console.log($scope.review)
     dataFactory.postReview($scope.review).success(function(lastArtist){
+      console.log("lastArtist",lastArtist)
       $location.url('/artist/' + dataFactory.reviewArtist)
     })
   }
