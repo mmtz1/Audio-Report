@@ -1,8 +1,8 @@
 angular.module('LiveAPP.factory',[])
-.factory('dataFactory', ['$http','$location', '$rootScope',dataFactory])
+.factory('dataFactory', ['$http', '$location', '$rootScope', dataFactory])
 
 
-function dataFactory($http,$location,$rootScope){
+function dataFactory($http, $location, $rootScope){
   var dataFactory = {};
 
   dataFactory.artistInformation = {};
@@ -18,18 +18,17 @@ function dataFactory($http,$location,$rootScope){
   dataFactory.avgReview = function(reviews){
     var sum = 0;
     var count = 0;
-    console.log("INPUT",reviews)
     for(var i = 0; i < reviews.length; i++){
       count++;
       sum += reviews[i].number_of_stars;
     }
-    return { avgRating: Number((sum/count).toFixed(1)),reviews:count}
+    return { avgRating: Number((sum/count).toFixed(1)), reviews:count }
   }
 
   dataFactory.artistInfoAPIs = function(artist){
     return $http.get("https://api.spotify.com/v1/search?q=" + artist + "&type=artist").success(function(data){
       var capitalLetter = function(genre){
-          if(genre === ""){
+          if(genre === undefined){
               return "";
           }
 
@@ -37,11 +36,11 @@ function dataFactory($http,$location,$rootScope){
           var newWord = [];
 
           for(var k in wordArr){
-              var capital = wordArr[k].charAt(0).toUpperCase() + wordArr[k].slice(1)
-              newWord.push(capital)
+              var capital = wordArr[k].charAt(0).toUpperCase() + wordArr[k].slice(1);
+              newWord.push(capital);
           }
 
-          return newWord.join(" ")
+          return newWord.join(" ");
       }
 
         dataFactory.artistInfo.artist_genre = capitalLetter(data.artists.items[0].genres[0]) || "";
@@ -59,9 +58,7 @@ function dataFactory($http,$location,$rootScope){
   };
 
 
-  dataFactory.postTodb = function(data){
-    console.log("THIS IS THE DATA WE ARE POSTING",data)
-
+  dataFactory.postTodb = function (data) {
     return $http.post('/artistsearch', data);
   };
 
