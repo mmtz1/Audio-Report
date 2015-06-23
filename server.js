@@ -17,7 +17,7 @@ var db_config = {
   user:"b00955d08fef04",
   password:"9bd21f2d",
   database:"heroku_fdeff37a1f83aa6"
-}
+};
 
 // var db_config = {
 //     host        : 'localhost',
