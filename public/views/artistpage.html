@@ -3,9 +3,9 @@
       <div class="row artistinfo">
         <div class="col-sm-6">
           <div><h1>{{artistInfo.artist_name}}</h1></div>
-          <mainstar></mainstar>
-          <div id='reviews'> Reviews</div>
-          <div><h2>{{artistInfo.artist_genre}}</h2></div>
+          <div class="mainstar"><ratestar></ratestar></div>
+          <div id='reviewsnum'> Reviews</div>
+          <div class='genre'><h2>{{artistInfo.artist_genre}}</h2></div>
           <div><p>{{artistInfo.artist_bio}}</p></div>
           <div><button type="button" class="btn btn-primary" ng-click="reviewArtist()">Submit a Review for {{artistInfo.artist_name}} </button></div>
         </div>
@@ -31,6 +31,10 @@
   <hr style="width:100%;height:1px;border:none;color:#333;background-color:#333;"/>
 
 </div>
+
+
+
+
 
 
 

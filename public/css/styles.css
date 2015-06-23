@@ -250,6 +250,8 @@ form.form-horizontal.fullform{
 .mainreviewdata{
   display: inline-block; 
   vertical-align:middle;
+  margin-left:.5%;
+  width:50%;
 
 }
 
@@ -259,6 +261,21 @@ form.form-horizontal.fullform{
   vertical-align:middle;
   border-radius: 10px;
 }
+.reviewstars{
+  margin-left:-1%;
+}
 
+.mainstar, #reviewsnum{
+  display: inline-block;
+  margin-left:-1%;
+}
+
+#reviewsnum{
+  vertical-align: super;
+}
+
+.genre{
+  margin-top:-3%;
+}
 
 

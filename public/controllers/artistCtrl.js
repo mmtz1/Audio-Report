@@ -1,36 +1,35 @@
 angular.module('LiveAPP.artist',[])
 .controller('artistCtrl', ['$scope', '$http', '$location', 'dataFactory', '$routeParams', artistCtrl])
 
-.directive("mainstar", function() {
-    return {
-        restrict: "E",
-        template: "<div id='rateYo'></div>",
-        link: function( scope, ele, attrs ) {
-            console.log(scope.ratingInfo)
-            // var $rateYo = $(ele).rateYo({
-            //   starWidth: "20px",
-            //   rating:3
-            // });
- 
-        }
-    };
-})
-
-
 .directive("ratestar", function() {
     return {
         restrict: "E",
+        
         template: "<div id='rateYo'></div>",
         link: function( scope, ele, attrs ) {
-            console.log("DATA",scope.ratingInfo.avgRating)
+            
+            if(scope.reviews === undefined){
+              $rateYoMain = $(ele).rateYo({
+                rating:3
+              })
+            } else {
             var $rateYo = $(ele).rateYo({
               starWidth: "20px",
               rating:scope.review.number_of_stars
             });
+          }
  
         }
     };
 })
+
+
+
+
+
+
+
+
 
 
 
@@ -63,7 +62,7 @@ function artistCtrl($scope, $http, $location, dataFactory, $routeParams){
     });
 
 
-    $scope.ratingInfo = ""
+    $scope.ratingInfo = "12";
     
     $scope.artistInfo = {
       artist_name: dataFactory.artistInfo.artist_name,
