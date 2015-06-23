@@ -1,21 +1,39 @@
 angular.module('LiveAPP.artist',[])
 .controller('artistCtrl', ['$scope', '$http', '$location', 'dataFactory', '$routeParams', artistCtrl])
 
-.directive("rateYo", function() {
+.directive("mainstar", function() {
     return {
-        restrict: "A",
-        scope: {
-            artistName: "="
-        },
+        restrict: "E",
         template: "<div id='rateYo'></div>",
         link: function( scope, ele, attrs ) {
+            console.log(scope.ratingInfo)
+            // var $rateYo = $(ele).rateYo({
+            //   starWidth: "20px",
+            //   rating:3
+            // });
+ 
+        }
+    };
+})
+
+
+.directive("ratestar", function() {
+    return {
+        restrict: "E",
+        template: "<div id='rateYo'></div>",
+        link: function( scope, ele, attrs ) {
+            console.log("DATA",scope.ratingInfo.avgRating)
             var $rateYo = $(ele).rateYo({
-              rating:0
+              starWidth: "20px",
+              rating:scope.review.number_of_stars
             });
  
         }
     };
-});
+})
+
+
+
 
 
 
@@ -32,9 +50,8 @@ function artistCtrl($scope, $http, $location, dataFactory, $routeParams){
         if(dbData.data != "No data"){
           $scope.artistInfo = dbData.data[0];
           $scope.reviews = dbData.data[1];
-          $scope.ratingInfo = dataFactory.avgReview($scope.reviews);
-
           
+          $scope.ratingInfo = dataFactory.avgReview($scope.reviews);
         } else{
           dataFactory.artistInfoAPIs(newValue);
         }
@@ -45,7 +62,6 @@ function artistCtrl($scope, $http, $location, dataFactory, $routeParams){
       $scope.artistInfo = data;
     });
 
-    
 
     $scope.ratingInfo = ""
     
@@ -61,8 +77,8 @@ function artistCtrl($scope, $http, $location, dataFactory, $routeParams){
       $location.url("/review");
     };
 
-    $scope.reviews = "";
-
+    
+    
 }
 
 

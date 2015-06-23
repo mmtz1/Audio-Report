@@ -134,9 +134,9 @@ div.container.signin{
 }
 
 .reviewicon {
-  border:1px;
+  display: inline-block;
   background-color: gray;
-  padding:10px;
+  
   border-radius: 10px;
 }
 
@@ -218,15 +218,7 @@ p.front{
   font-size: 20px;
 }
 
-div#stars{
-  padding:0; !important
-  float:left;
-}
-#reviews{
-  display: inline-block;
-  margin-top: 6px;
-  margin-left: 10px;
-}
+
 .col-lg-3{
   margin-left:35%;
 }
@@ -254,6 +246,19 @@ form.form-horizontal.fullform{
   margin-left:30%;
 }
 
-.reviewstars {
-  margin-left:17.5%;
+
+.mainreviewdata{
+  display: inline-block; 
+  vertical-align:middle;
+
 }
+
+.reviewicon {
+  display: inline-block;
+  background-color: gray;
+  vertical-align:middle;
+  border-radius: 10px;
+}
+
+
+
