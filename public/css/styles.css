@@ -306,6 +306,7 @@ form.form-horizontal.fullform{
   background-color: #eeeeee;
   width:50%;
   display: inline-block;
+  float:left;
 
 }
 hr.reviewline{
