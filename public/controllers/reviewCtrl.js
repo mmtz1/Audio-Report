@@ -28,7 +28,6 @@ angular.module('liveAPP.review',['LiveAPP.factory'])
       restrict: "E",
       template: '<input type="text" id="datepicker" class="form-control review">',
       link: function( scope, ele, attrs ){
-        console.log(scope.review)
         var date = $('#datepicker').datepicker({onClose: function(selectedDate) {
           scope.review.review_date = selectedDate
         }});
@@ -54,10 +53,8 @@ function reviewCtrl($scope,$http,dataFactory,$location){
 
   
   $scope.reviewSubmission = function(review){
-    
     $scope.review.number_of_stars = $scope.rating;
     dataFactory.postReview($scope.review).success(function(lastArtist){
-      
       $location.url('/artist/' + lastArtist);
     })
   };
