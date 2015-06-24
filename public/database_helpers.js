@@ -21,7 +21,7 @@ var connection = mysql.createConnection({
 exports.checkDbArtist = function(req, res, next){
   console.log("THIS",req.query)
   if(req.query.getArtist){
-    connection.query('SELECT * FROM reviews r INNER JOIN artist a ON r.artist_id = a.artist_id ORDER BY time DESC LIMIT 5;',function(err,rows){
+    connection.query('SELECT * FROM reviews r INNER JOIN artist a ON r.artist_id = a.artist_id ORDER BY time DESC LIMIT 4;',function(err,rows){
       res.send(rows)
     })
 

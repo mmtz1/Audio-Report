@@ -1,7 +1,22 @@
 angular.module('LiveAPP.main',['LiveAPP.factory'])
-.controller('mainCtrl', ['$scope','$http', '$location','dataFactory',mainCtrl]);
+.controller('mainCtrl', ['$rootScope','$scope','$http', '$location','dataFactory',mainCtrl])
 
-function mainCtrl($scope,$http,$location,dataFactory){
+.directive('ratehome',function(){
+  return {
+    restrict:"E",
+    template: "<div id='rateYo'></div>",
+    link: function(scope, ele, attrs){
+      
+        $(ele).rateYo({
+              readOnly: true,
+              rating:scope.artists.number_of_stars
+        })
+    }
+  }
+})
+
+
+function mainCtrl($rootScope,$scope,$http,$location,dataFactory){
 
   $scope.getArtist = function(artist){
     $location.url("/artist/" + artist);
@@ -13,8 +28,8 @@ function mainCtrl($scope,$http,$location,dataFactory){
         url: '/artistsearch',
         params: {getArtist: "all"}
     }).then(function(recent){
-      
       $scope.recentArtist = recent.data
+      $rootScope.$broadcast('artistLoaded');
       
     })
   };
@@ -23,11 +38,13 @@ function mainCtrl($scope,$http,$location,dataFactory){
 
   $scope.getRecentArtists();
 
+  $scope.$watch('recentArtist',function(newValue,oldValue){
+    
+    $scope.recentArtist = newValue
+  })
+
 
 }    
-
-
-
 
 
     
