@@ -19,3 +19,10 @@
   </div>
 
 </div>
+
+<div ng-repeat='artists in recentArtist'>
+  <div>{{artists.artist_name}}</div>
+  <div>{{artists.number_of_stars}}</div>
+  <div>{{artists.venue}}</div>
+  <div><img width="10%" height="10%"src="{{artists.artist_imageurl}}"></div>
+</div>

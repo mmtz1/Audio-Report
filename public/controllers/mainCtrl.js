@@ -7,6 +7,23 @@ function mainCtrl($scope,$http,$location,dataFactory){
     $location.url("/artist/" + artist);
   };
 
+  $scope.getRecentArtists = function(){
+     return $http({
+        method: 'GET',
+        url: '/artistsearch',
+        params: {getArtist: "all"}
+    }).then(function(recent){
+      
+      $scope.recentArtist = recent.data
+      
+    })
+  };
+
+  $scope.recentArtist = ""
+
+  $scope.getRecentArtists();
+
+
 }    
 
 

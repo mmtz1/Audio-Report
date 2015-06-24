@@ -21,5 +21,7 @@ CREATE TABLE reviews (
   number_of_stars INT NOT NULL,
   review_details VARCHAR(10000) NOT NULL,
   artist_id VARCHAR(100) NOT NULL,
+  time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  concert_date DATE NOT NULL,
   PRIMARY KEY ( review_id )
 );

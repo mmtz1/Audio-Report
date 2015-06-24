@@ -1,25 +1,35 @@
 var mysql = require('mysql');
 var express = require('express');
 var javascripthelp = require('./js/functionHelpers.js');
-
-// var connection = mysql.createConnection({
-//     host        : 'localhost',
-//     port        :  3306,
-//     user        : 'root',
-//     password    : '',
-//     database    : 'live',
-//     multipleStatements: true
-// });
-
+var dateformat = require('dateformat');
 var connection = mysql.createConnection({
-  host:"us-cdbr-iron-east-02.cleardb.net",
-  user:"b00955d08fef04",
-  password:"9bd21f2d",
-  database:"heroku_fdeff37a1f83aa6"
+    host        : 'localhost',
+    port        :  3306,
+    user        : 'root',
+    password    : '',
+    database    : 'live',
+    multipleStatements: true
 });
 
+// var connection = mysql.createConnection({
+//   host:"us-cdbr-iron-east-02.cleardb.net",
+//   user:"b00955d08fef04",
+//   password:"9bd21f2d",
+//   database:"heroku_fdeff37a1f83aa6"
+// });
+
 exports.checkDbArtist = function(req, res, next){
+  console.log("THIS",req.query)
+  if(req.query.getArtist){
+    connection.query('SELECT * FROM reviews r INNER JOIN artist a ON r.artist_id = a.artist_id ORDER BY time DESC LIMIT 5;',function(err,rows){
+      res.send(rows)
+    })
+
+  } else {
   var newArtist = [req.query.artistname.replace("+"," ")];
+
+
+
   
   connection.query('SELECT * FROM artist WHERE artist_name = ?', 
   newArtist, function(err, rows, fields){
@@ -35,6 +45,7 @@ exports.checkDbArtist = function(req, res, next){
       res.send("No data")
     }
   })
+  }
 }
 
 exports.insertDb = function(req,res,next){
@@ -49,8 +60,12 @@ exports.insertDb = function(req,res,next){
 
 
 exports.insertReviewDb = function(req,res,next){
+  console.log("THIS IS THE DATE",req.body.review_date)
+  var date = new Date(req.body.review_date)
+  var mySqlDate = dateformat(date,"yyyy-mm-dd HH:MM:ss") 
   connection.query('SELECT artist_id FROM artist WHERE artist_name = ?', [req.body.artist_name],function(err, rows){
     req.body.artist_id = rows[0].artist_id;
+    req.body.review_date = mySqlDate
     var lastArtist = req.body.artist_name;
     delete req.body.artist_name;
     
