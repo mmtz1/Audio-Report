@@ -60,7 +60,6 @@ exports.insertDb = function(req,res,next){
 
 
 exports.insertReviewDb = function(req,res,next){
-  console.log("THIS IS THE DATE",req.body.review_date)
   var date = new Date(req.body.review_date)
   var mySqlDate = dateformat(date,"yyyy-mm-dd HH:MM:ss") 
   connection.query('SELECT artist_id FROM artist WHERE artist_name = ?', [req.body.artist_name],function(err, rows){

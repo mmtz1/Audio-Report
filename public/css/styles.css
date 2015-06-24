@@ -281,3 +281,39 @@ form.form-horizontal.fullform{
 .reviewstarssub{
   margin-left:20%;
 }
+.recentinfo, .recentimage{
+  display: inline-block;
+  font-family: 'Lato', sans-serif;
+
+}
+
+.recentinfo{
+  margin-top:-12.5px;
+  margin-left:5px;
+
+}
+.recentimage {
+    position: relative;
+    float: left;
+    width:  100px;
+    height: 100px;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 25px;
+}
+.fullrecent{
+  background-color: #eeeeee;
+  width:50%;
+
+}
+
+.recentconcerts{
+  
+  font-family: 'Lato', sans-serif;
+}
+.recenttitle{
+  font-family: 'Gravitas One';
+
+background-image: none;
+}
