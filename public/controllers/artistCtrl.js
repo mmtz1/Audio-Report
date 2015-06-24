@@ -4,65 +4,59 @@ angular.module('LiveAPP.artist',[])
 .directive("ratestar", function() {
     return {
         restrict: "E",
-        
         template: "<div id='rateYo'></div>",
         link: function( scope, ele, attrs ) {
-            
-            if(scope.reviews === undefined){
-              $rateYoMain = $(ele).rateYo({
-                rating:3
-              })
-            } else {
+
+          console.log("new",scope.stars)
+          if(scope.reviews === undefined){
+            var $rateYoMain = $(ele).rateYo({
+              readOnly: true,
+              rating:5
+            })
+          }
             var $rateYo = $(ele).rateYo({
               starWidth: "20px",
-              rating:scope.review.number_of_stars
+              rating:scope.review.number_of_stars,
+              readOnly: true
             });
           }
  
         }
-    };
-})
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    })
 
 function artistCtrl($scope, $http, $location, dataFactory, $routeParams){
     
     $scope.artistName = $routeParams.artistname;
 
+
+
     $scope.$watch( 'artistName', function( newValue, oldValue ) {
       dataFactory.checkDb( newValue ).then(function(dbData){
         if(dbData.data != "No data"){
+          $scope.stars = dataFactory.avgReview(dbData.data[1]);
           $scope.artistInfo = dbData.data[0];
           $scope.reviews = dbData.data[1];
           
-          $scope.ratingInfo = dataFactory.avgReview($scope.reviews);
+
         } else{
           dataFactory.artistInfoAPIs(newValue);
         }
       })
     });
     
+    // $scope.ratingInfo = {
+    //   avgRating:"",
+    //   reviews:""
+    // }
+    
+ 
+
     $scope.$on('artist:updated', function(event, data){
       $scope.artistInfo = data;
     });
 
-
-    $scope.ratingInfo = "12";
+    
+    
     
     $scope.artistInfo = {
       artist_name: dataFactory.artistInfo.artist_name,
@@ -74,9 +68,7 @@ function artistCtrl($scope, $http, $location, dataFactory, $routeParams){
     $scope.reviewArtist = function(){
       dataFactory.reviewArtist = $scope.artistInfo.artist_name;
       $location.url("/review");
-    };
-
-    
+    };  
     
 }
 

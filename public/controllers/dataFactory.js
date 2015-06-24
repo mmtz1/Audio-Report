@@ -31,8 +31,8 @@ function dataFactory($http, $location, $rootScope){
         dataFactory.artistInfo.artist_genre = dataFactory.capitalLetter(genre);
         dataFactory.artistInfo.artist_imageurl = data.artists.items[0].images[0].url || "";
         dataFactory.artistInfo.artist_name = data.artists.items[0].name || "";
-        
-        return $http.get("https://developer.echonest.com/api/v4/artist/biographies?api_key=T0OOMWQVXVAFNUL14&name=" + artist).success(function(data){
+        console.log('artist',dataFactory.artistInfo.artist_name)
+        return $http.get("https://developer.echonest.com/api/v4/artist/biographies?api_key=T0OOMWQVXVAFNUL14&name=" + dataFactory.artistInfo.artist_name).success(function(data){
           dataFactory.artistInfo.artist_bio = dataFactory.findWiki(data);
           dataFactory.postTodb(dataFactory.artistInfo).success(function(){
             $rootScope.$broadcast('artist:updated',dataFactory.artistInfo);
@@ -40,6 +40,9 @@ function dataFactory($http, $location, $rootScope){
         });
     })
   };
+
+
+  
 
   dataFactory.capitalLetter = function(genre){
     if(genre == 'undefined'){
@@ -68,10 +71,15 @@ function dataFactory($http, $location, $rootScope){
   };
 
   dataFactory.findWiki = function(data){
+    console.log("WIKI",data)
     for(var i = 0; i < data.response.biographies.length; i++){
-      if(data.response.biographies[i].site === 'wikipedia'){
+      if(data.response.biographies[i].site === 'wikipedia' && (data.response.biographies[i].text.indexOf('jpeg') != -1)){
           return data.response.biographies[i].text.match( /[^\.!\?]+[\.!\?]+/g ).splice(0,4).join("");
+
       }
+      else if(data.response.biographies[i].site === 'last.fm'){
+        return data.response.biographies[i].text.match( /[^\.!\?]+[\.!\?]+/g ).splice(0,4).join("");
+      } 
     }
   };
 
