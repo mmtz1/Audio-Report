@@ -305,15 +305,18 @@ form.form-horizontal.fullform{
 .fullrecent{
   background-color: #eeeeee;
   width:50%;
+  display: inline-block;
 
 }
-
+hr.reviewline{
+  margin:0;
+  border-color:white;
+  background-color:white;
+}
 .recentconcerts{
-  
   font-family: 'Lato', sans-serif;
 }
-.recenttitle{
-  font-family: 'Gravitas One';
-
-background-image: none;
+.secondfrontimage{
+  width:50%;
+  display:inline-block;
 }
