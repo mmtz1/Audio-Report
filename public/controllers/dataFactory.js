@@ -71,23 +71,15 @@ function dataFactory($http, $location, $rootScope){
   };
 
   dataFactory.findWiki = function(data){
-    console.log("shit")
     for(var i = 0; i < data.response.biographies.length; i++){
-      
-      if(data.response.biographies[i].site === 'wikipedia'&& (data.response.biographies[i].text.indexOf('jpeg') != -1)){
-          console.log("DATA",data.response.biographies[i].site)
-
-          return data.response.biographies[i].text.match( /[^\.!\?]+[\.!\?]+/g ).splice(0,4).join("");
-
+      if(data.response.biographies[i].site === 'wikipedia' && (data.response.biographies[i].text.indexOf("MIME") === -1)){
+        return data.response.biographies[i].text.match( /[^\.!\?]+[\.!\?]+/g ).splice(0,4).join("");
       }
-      else if(data.response.biographies[i].site === 'last.fm'){
-        if(data.response.biographies[i].text.indexOf('There are') != -1) {
+      else if (data.response.biographies[i].site === 'last.fm'){
           var newest = data.response.biographies[i].text.toString().replace("There are two artists with this name.  1. ","")
           var finaldata = newest.match( /[^\.!\?]+[\.!\?]+/g ).splice(0,4).join("");
-          return finaldata
-        } 
-      }
-     
+          return finaldata;
+        }
       } 
     }
   
