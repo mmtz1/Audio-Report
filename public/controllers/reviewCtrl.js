@@ -28,9 +28,8 @@ angular.module('liveAPP.review',['LiveAPP.factory'])
       restrict: "E",
       template: '<input type="text" id="datepicker" class="form-control review">',
       link: function( scope, ele, attrs ){
-        console.log(scope.review)
         var date = $('#datepicker').datepicker({onClose: function(selectedDate) {
-          scope.review.review_date = selectedDate
+          scope.review.concert_date = selectedDate
         }});
         
       }
@@ -48,16 +47,14 @@ function reviewCtrl($scope,$http,dataFactory,$location){
     venue: "",
     artist_name: dataFactory.reviewArtist,
     number_of_stars: "",
-    review_date:""
+    concert_date:""
   
   };
 
   
   $scope.reviewSubmission = function(review){
-    
     $scope.review.number_of_stars = $scope.rating;
     dataFactory.postReview($scope.review).success(function(lastArtist){
-      
       $location.url('/artist/' + lastArtist);
     })
   };

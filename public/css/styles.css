@@ -169,6 +169,7 @@ div.container.signin{
   background-color: #FEF1D9;
   height: 100%;
   margin-top: -5%;
+  padding-bottom:5%;
 }
 
 .navbar-custom {
@@ -281,43 +282,69 @@ form.form-horizontal.fullform{
 .reviewstarssub{
   margin-left:20%;
 }
-.recentinfo, .recentimage{
-  display: inline-block;
-  font-family: 'Lato', sans-serif;
 
-}
-
-.recentinfo{
-  margin-top:-12.5px;
-  margin-left:5px;
-
-}
-.recentimage {
-    position: relative;
-    float: left;
-    width:  100px;
-    height: 100px;
-    background-position: 50% 50%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    border-radius: 25px;
-}
-.fullrecent{
-  background-color: #eeeeee;
-  width:50%;
-  display: inline-block;
-  float:left;
-
-}
 hr.reviewline{
   margin:0;
   border-color:white;
   background-color:white;
 }
-.recentconcerts{
-  font-family: 'Lato', sans-serif;
+.fullrecent{
+  position: relative;
+  /*background-color: #8FA9DA;*/
 }
-.secondfrontimage{
-  width:50%;
-  display:inline-block;
+.recentimage{
+  position: relative;
+  float: left;
+  width:  100%;
+  height: 500px;
+  background-position: 50% 50%;
+  background-repeat:   no-repeat;
+  background-size:     cover;
+  padding:4%;
+  border-radius: 43px;
+}   
+
+.fullrecent {
+    overflow: auto;
+}
+
+.recentconcerts {
+  float: left;
+  width: 50%;
+  position: relative;
+  text-align: center;
+}
+
+
+#text {
+  background: rgba(255,255,255, .75);
+  position: absolute;
+  width: 100%;
+  height:20%;
+  float:left; 
+  bottom:4.5%;
+  left:4%;
+}
+
+#headerrecent{
+  float:left;
+  margin-left:10px;
+  margin-top:-10px;
+  display: inline-block;
+}
+
+
+#starsrecent{
+  display: inline-block;
+  float:left;
+  margin-top:1%;
+}
+#recenttitle{
+  background-image: url(https://uwaterloo.ca/canada-day/sites/ca.canada-day/files/uploads/images/concert-crowds.jpg);
+  margin: 0 auto;
+  background-position: 0px -50%;
+  font-family: 'Lato', sans-serif;
+  color:white;
+  height:85px;
+
 }

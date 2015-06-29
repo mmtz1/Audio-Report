@@ -7,19 +7,20 @@ angular.module('LiveAPP.artist',[])
         template: "<div id='rateYo'></div>",
         link: function( scope, ele, attrs ) {
 
-          console.log("new",scope.stars)
+          
           if(scope.reviews === undefined){
             var $rateYoMain = $(ele).rateYo({
               readOnly: true,
               rating:5
             })
-          }
+          }else{
             var $rateYo = $(ele).rateYo({
               starWidth: "20px",
               rating:scope.review.number_of_stars,
               readOnly: true
             });
           }
+        }
  
         }
     })
