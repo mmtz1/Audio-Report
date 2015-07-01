@@ -1,5 +1,5 @@
 angular.module('LiveAPP.artist',[])
-.controller('artistCtrl', ['$scope', '$http', '$location', 'dataFactory', '$routeParams', artistCtrl])
+.controller('artistCtrl', ['$scope', '$http', '$location', 'dataFactory', '$stateParams', artistCtrl])
 
 .directive("ratestar", function() {
     return {
@@ -25,13 +25,14 @@ angular.module('LiveAPP.artist',[])
         }
     })
 
-function artistCtrl($scope, $http, $location, dataFactory, $routeParams){
+function artistCtrl($scope, $http, $location, dataFactory, $stateParams){
     
-    $scope.artistName = $routeParams.artistname;
-
+    $scope.artistName = $stateParams.artistname;
+    console.log('artist controller bitch')
 
 
     $scope.$watch( 'artistName', function( newValue, oldValue ) {
+      
       dataFactory.checkDb( newValue ).then(function(dbData){
         if(dbData.data != "No data"){
           $scope.stars = dataFactory.avgReview(dbData.data[1]);

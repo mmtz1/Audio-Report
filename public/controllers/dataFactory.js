@@ -5,10 +5,23 @@ angular.module('LiveAPP.factory',[])
 function dataFactory($http, $location, $rootScope){
   var dataFactory = {};
 
+  dataFactory.getRecentArtists = function(){
+     return $http({
+        method: 'GET',
+        url: '/artistsearch',
+        params: {getArtist: "all"}
+    }).then(function(recent){
+      return recent.data[0];
+    })
+  };
+
+
+
   dataFactory.artistInformation = {};
 
   dataFactory.checkDb = function(artist){
-     return $http({
+      console.log("CHECK DB fired with",artist)
+      return $http({
         method: 'GET',
         url: '/artistsearch',
         params: {artistname: artist}
