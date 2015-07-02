@@ -36,17 +36,8 @@ function artistCtrl($scope, $http, $location, dataFactory, $stateParams, getArti
     $scope.artistInfo =  getArtists.data === undefined ? getArtists : getArtists.data[0]
     $scope.reviews = getArtists.data === undefined ? "" : dataFactory.dateFormat(getArtists.data[1])
     
-
-
-    // $scope.$on('api-finished',function(event,data){
-    //   $scope.artistInfo = data;
-    // })
-
     $scope.avgData = dataFactory.avgReview($scope.reviews);
 
-    
-
-    
     $scope.reviewArtist = function(){
       dataFactory.reviewArtist = $scope.artistInfo.artist_name;
       $location.url("/review");
