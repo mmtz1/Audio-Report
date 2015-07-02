@@ -55,9 +55,7 @@ function dataFactory($http, $location, $rootScope){
   };
 
 
-          // dataFactory.postTodb(dataFactory.artistInfo).success(function(){
-            
-          // })
+     
 
   dataFactory.capitalLetter = function(genre){
     if(genre == 'undefined'){
@@ -86,7 +84,7 @@ function dataFactory($http, $location, $rootScope){
   };
 
   dataFactory.findWiki = function(data){
-    console.log("wiki",data)
+    
     for(var i = 0; i < data.data.response.biographies.length; i++){
       if(data.data.response.biographies[i].site === 'wikipedia' && (data.data.response.biographies[i].text.indexOf("MIME") === -1)){
         return data.data.response.biographies[i].text.match( /[^\.!\?]+[\.!\?]+/g ).splice(0,4).join("");

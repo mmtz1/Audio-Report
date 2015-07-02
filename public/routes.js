@@ -47,7 +47,9 @@ $stateProvider.state("home", {
         
         return $http.get("https://developer.echonest.com/api/v4/artist/biographies?api_key=T0OOMWQVXVAFNUL14&name=" + dataFactory.artistInfo.artist_name).then(function(data){
           dataFactory.artistInfo.artist_bio = dataFactory.findWiki(data);
-          
+          dataFactory.postTodb(dataFactory.artistInfo).success(function(){
+            
+          })
           return dataFactory.artistInfo;
           // $rootScope.$broadcast("api-finished", dataFactory.artistInfo)
 

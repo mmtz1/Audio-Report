@@ -2,21 +2,21 @@ var mysql = require('mysql');
 var express = require('express');
 var javascripthelp = require('./js/functionHelpers.js');
 var dateformat = require('dateformat');
-// var connection = mysql.createConnection({
-//     host        : 'localhost',
-//     port        :  3306,
-//     user        : 'root',
-//     password    : '',
-//     database    : 'live',
-//     multipleStatements: true
-// });
-
 var connection = mysql.createConnection({
-  host:"us-cdbr-iron-east-02.cleardb.net",
-  user:"b00955d08fef04",
-  password:"9bd21f2d",
-  database:"heroku_fdeff37a1f83aa6"
+    host        : 'localhost',
+    port        :  3306,
+    user        : 'root',
+    password    : '',
+    database    : 'live',
+    multipleStatements: true
 });
+
+// var connection = mysql.createConnection({
+//   host:"us-cdbr-iron-east-02.cleardb.net",
+//   user:"b00955d08fef04",
+//   password:"9bd21f2d",
+//   database:"heroku_fdeff37a1f83aa6"
+// });
 
 exports.checkDbArtist = function(req, res, next){
   if(req.query.getArtist){
@@ -45,6 +45,7 @@ exports.checkDbArtist = function(req, res, next){
 }
 
 exports.insertDb = function(req,res,next){
+  
   connection.query('INSERT INTO ?? SET ?', ['artist',req.body], function(err, result, rows){
     if (!err){
       res.send(req.body.artist_name);
@@ -59,7 +60,8 @@ exports.insertReviewDb = function(req,res,next){
   
   var date = new Date(req.body.concert_date)
 
-  var mySqlDate = dateformat(date,"yyyy-mm-dd HH:MM:ss") 
+  var mySqlDate = dateformat(date,"yyyy-mm-dd HH:MM:ss")
+  console.log(req.body) 
   connection.query('SELECT artist_id FROM artist WHERE artist_name = ?', [req.body.artist_name],function(err, rows){
     req.body.artist_id = rows[0].artist_id;
     req.body.concert_date = mySqlDate
