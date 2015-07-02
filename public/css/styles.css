@@ -136,8 +136,10 @@ div.container.signin{
 .reviewicon {
   display: inline-block;
   background-color: gray;
-  
+  height:100px; 
+  width:100px;
   border-radius: 10px;
+  
 }
 
 
@@ -253,15 +255,11 @@ form.form-horizontal.fullform{
   vertical-align:middle;
   margin-left:.5%;
   width:50%;
+  margin-top: -3%
 
 }
 
-.reviewicon {
-  display: inline-block;
-  background-color: gray;
-  vertical-align:middle;
-  border-radius: 10px;
-}
+
 .reviewstars{
   margin-left:-1%;
 }
@@ -272,9 +270,9 @@ form.form-horizontal.fullform{
   
 }
 
-/*#reviewsnum{
-  vertical-align: super;
-}*/
+#rockon{
+  display: inline-block;
+}
 
 .genre{
   margin-top:-3%;
@@ -341,8 +339,27 @@ hr.reviewline{
   margin-top:1%;
 }
 #recenttitle{
-  background-image: url(https://uwaterloo.ca/canada-day/sites/ca.canada-day/files/uploads/images/concert-crowds.jpg);
+  display: inline-block;
+  margin:0;
+  padding-left: 33%;
+  vertical-align: middle;
+}
+#rockonright{
+  display: inline-block;
+  float:right;
+  padding-top: 7px;
+  width:5%;
+}
+
+#rockon{
+  display: inline-block;
+  padding-top: 7px;
+  width:5%;
+}
+.recenetheadercontainer{
+  /*background-image: url(https://uwaterloo.ca/canada-day/sites/ca.canada-day/files/uploads/images/concert-crowds.jpg);*/
   margin: 0 auto;
+  background-color: #AD3333;
   background-position: 0px -50%;
   font-family: 'Lato', sans-serif;
   color:white;
@@ -352,5 +369,8 @@ hr.reviewline{
 div.mainstar.jq-ry-container{
   display: inline-block;
   padding-left: 0px;
+}
+#recentvenue{
+  width:10%;
 }
 

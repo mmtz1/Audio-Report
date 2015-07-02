@@ -18,7 +18,10 @@ angular.module('LiveAPP.home',['LiveAPP.factory'])
 
 function homeCtrl($rootScope,$scope,$http,$location,dataFactory,artists){
   
-  $scope.recentArtist = artists;
+  $scope.recentArtist = dataFactory.dateFormat(artists);
+  $scope.somefunc = function(artist){
+    $location.url("/artist/" + artist)
+  }
   
 
 

@@ -35,14 +35,10 @@ $stateProvider.state("home", {
                 templateUrl:'/artistpage.html',
                 resolve:{
                   getArtists: function($stateParams,dataFactory){
-                          
                           return dataFactory.checkDb($stateParams.artistname).then(function(dbData){
-                            console.log(dbData)
                             if(dbData.data != "No data"){
                               return dbData
-                            } else{
-                              return dataFactory.artistInfoAPIs(newValue);
-                            }
+                            } 
                           })
                   }
                 }

@@ -18,7 +18,6 @@ angular.module('LiveAPP.artist',[])
         restrict: "E",
         template: "<div id='rateYo'></div>",
         link: function( scope, ele, attrs ) {
-            
             var $rateYoMain = $(ele).rateYo({
               readOnly: true,
               rating:scope.review.number_of_stars,
@@ -28,11 +27,15 @@ angular.module('LiveAPP.artist',[])
       }
     })
 
-function artistCtrl($scope, $http, $location, dataFactory, $stateParams,getArtists){
+function artistCtrl($scope, $http, $location, dataFactory, $stateParams, getArtists){
+    console.log('data',getArtists)
+    $scope.artistInfo =  getArtists.data[0]
+    $scope.reviews = dataFactory.dateFormat(getArtists.data[1])
     
-    $scope.artistInfo =  getArtists.data[0];
-    $scope.reviews = getArtists.data[1];
     $scope.avgData = dataFactory.avgReview($scope.reviews);
+
+    
+
     
     $scope.reviewArtist = function(){
       dataFactory.reviewArtist = $scope.artistInfo.artist_name;
