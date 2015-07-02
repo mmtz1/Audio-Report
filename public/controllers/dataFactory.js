@@ -16,6 +16,9 @@ function dataFactory($http, $location, $rootScope){
   };
 
   dataFactory.dateFormat = function(reviews){
+    if(reviews === undefined){
+      return "";
+    }
     for(var i = 0; i < reviews.length; i++){
       month = reviews[i].concert_date.substring(5,7)
       year = reviews[i].concert_date.substring(2,4)
@@ -47,19 +50,8 @@ function dataFactory($http, $location, $rootScope){
   };
 
   dataFactory.artistInfoAPIs = function(artist){
-    return $http.get("https://api.spotify.com/v1/search?q=" + artist + "&type=artist").then(function(data){
-        
-        var genre = data.artists.items[0].genres[0] || "";
-        dataFactory.artistInfo.artist_genre = dataFactory.capitalLetter(genre);
-        dataFactory.artistInfo.artist_imageurl = data.artists.items[0].images[0].url || "";
-        dataFactory.artistInfo.artist_name = data.artists.items[0].name || "";
-        
-        return $http.get("https://developer.echonest.com/api/v4/artist/biographies?api_key=T0OOMWQVXVAFNUL14&name=" + dataFactory.artistInfo.artist_name).then(function(data){
-          dataFactory.artistInfo.artist_bio = dataFactory.findWiki(data);
-          return dataFactory.artistInfo
-
-        });
-    })
+    var artist = artist.artistname;
+    return $http.get("https://api.spotify.com/v1/search?q=" + artist + "&type=artist")
   };
 
 
@@ -94,12 +86,13 @@ function dataFactory($http, $location, $rootScope){
   };
 
   dataFactory.findWiki = function(data){
-    for(var i = 0; i < data.response.biographies.length; i++){
-      if(data.response.biographies[i].site === 'wikipedia' && (data.response.biographies[i].text.indexOf("MIME") === -1)){
-        return data.response.biographies[i].text.match( /[^\.!\?]+[\.!\?]+/g ).splice(0,4).join("");
+    console.log("wiki",data)
+    for(var i = 0; i < data.data.response.biographies.length; i++){
+      if(data.data.response.biographies[i].site === 'wikipedia' && (data.data.response.biographies[i].text.indexOf("MIME") === -1)){
+        return data.data.response.biographies[i].text.match( /[^\.!\?]+[\.!\?]+/g ).splice(0,4).join("");
       }
-      else if (data.response.biographies[i].site === 'last.fm'){
-          var newest = data.response.biographies[i].text.toString().replace("There are two artists with this name.  1. ","")
+      else if (data.data.response.biographies[i].site === 'last.fm'){
+          var newest = data.data.response.biographies[i].text.toString().replace("There are two artists with this name.  1. ","")
           var finaldata = newest.match( /[^\.!\?]+[\.!\?]+/g ).splice(0,4).join("");
           return finaldata;
         }

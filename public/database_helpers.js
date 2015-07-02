@@ -2,14 +2,14 @@ var mysql = require('mysql');
 var express = require('express');
 var javascripthelp = require('./js/functionHelpers.js');
 var dateformat = require('dateformat');
-var connection = mysql.createConnection({
-    host        : 'localhost',
-    port        :  3306,
-    user        : 'root',
-    password    : '',
-    database    : 'live',
-    multipleStatements: true
-});
+// var connection = mysql.createConnection({
+//     host        : 'localhost',
+//     port        :  3306,
+//     user        : 'root',
+//     password    : '',
+//     database    : 'live',
+//     multipleStatements: true
+// });
 
 var connection = mysql.createConnection({
   host:"us-cdbr-iron-east-02.cleardb.net",

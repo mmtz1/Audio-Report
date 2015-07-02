@@ -33,9 +33,15 @@ angular.module('LiveAPP.artist',[])
 
 function artistCtrl($scope, $http, $location, dataFactory, $stateParams, getArtists){
     
-    $scope.artistInfo =  getArtists.data[0]
-    $scope.reviews = dataFactory.dateFormat(getArtists.data[1])
+    $scope.artistInfo =  getArtists.data === undefined ? getArtists : getArtists.data[0]
+    $scope.reviews = getArtists.data === undefined ? "" : dataFactory.dateFormat(getArtists.data[1])
     
+
+
+    // $scope.$on('api-finished',function(event,data){
+    //   $scope.artistInfo = data;
+    // })
+
     $scope.avgData = dataFactory.avgReview($scope.reviews);
 
     
