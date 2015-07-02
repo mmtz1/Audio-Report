@@ -1,72 +1,39 @@
 angular.module('LiveAPP.artist',[])
-.controller('artistCtrl', ['$scope', '$http', '$location', 'dataFactory', '$stateParams', artistCtrl])
+.controller('artistCtrl', ['$scope', '$http', '$location', 'dataFactory', '$stateParams','getArtists', artistCtrl])
 
-.directive("ratestar", function() {
+.directive("ratemain", function() {
+    return {
+        restrict: "A",
+        template: "<div id='rateYo'></div>",
+        link: function( scope, ele, attrs ) {
+            var $rateYoMain = $(ele).rateYo({
+              readOnly: true,
+              rating:scope.avgData.avgRating
+            })
+        }
+      }
+    })
+.directive("ratereview", function() {
     return {
         restrict: "E",
         template: "<div id='rateYo'></div>",
         link: function( scope, ele, attrs ) {
-
-          
-          if(scope.reviews === undefined){
+            
             var $rateYoMain = $(ele).rateYo({
               readOnly: true,
-              rating:5
-            })
-          }else{
-            var $rateYo = $(ele).rateYo({
-              starWidth: "20px",
               rating:scope.review.number_of_stars,
-              readOnly: true
-            });
-          }
+              starWidth: "20px"
+            })
         }
- 
-        }
+      }
     })
 
-function artistCtrl($scope, $http, $location, dataFactory, $stateParams){
+function artistCtrl($scope, $http, $location, dataFactory, $stateParams,getArtists){
     
-    $scope.artistName = $stateParams.artistname;
-    console.log('artist controller bitch')
-
-
-    $scope.$watch( 'artistName', function( newValue, oldValue ) {
-      
-      dataFactory.checkDb( newValue ).then(function(dbData){
-        if(dbData.data != "No data"){
-          $scope.stars = dataFactory.avgReview(dbData.data[1]);
-          $scope.artistInfo = dbData.data[0];
-          $scope.reviews = dbData.data[1];
-          
-
-        } else{
-          dataFactory.artistInfoAPIs(newValue);
-        }
-      })
-    });
+    $scope.artistInfo =  getArtists.data[0];
+    $scope.reviews = getArtists.data[1];
+    $scope.avgData = dataFactory.avgReview($scope.reviews);
     
-    // $scope.ratingInfo = {
-    //   avgRating:"",
-    //   reviews:""
-    // }
-    
- 
-
-    $scope.$on('artist:updated', function(event, data){
-      $scope.artistInfo = data;
-    });
-
-    
-    
-    
-    $scope.artistInfo = {
-      artist_name: dataFactory.artistInfo.artist_name,
-      artist_genre: dataFactory.artistInfo.artist_genre,
-      artist_imageurl: dataFactory.artistInfo.artist_imageurl,
-      artist_bio: dataFactory.artistInfo.artist_bio
-    };
-
     $scope.reviewArtist = function(){
       dataFactory.reviewArtist = $scope.artistInfo.artist_name;
       $location.url("/review");

@@ -266,14 +266,15 @@ form.form-horizontal.fullform{
   margin-left:-1%;
 }
 
-.mainstar, #reviewsnum{
-  display: inline-block;
-  margin-left:-1%;
+ #reviewsnum{
+  display: inline;
+  vertical-align: 50%
+  
 }
 
-#reviewsnum{
+/*#reviewsnum{
   vertical-align: super;
-}
+}*/
 
 .genre{
   margin-top:-3%;
@@ -346,5 +347,10 @@ hr.reviewline{
   font-family: 'Lato', sans-serif;
   color:white;
   height:85px;
-
 }
+
+div.mainstar.jq-ry-container{
+  display: inline-block;
+  padding-left: 0px;
+}
+

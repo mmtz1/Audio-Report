@@ -6,7 +6,7 @@ angular.module('LiveAPP.home',['LiveAPP.factory'])
     restrict:"E",
     template: "<div id='rateYo'></div>",
     link: function(scope, ele, attrs){
-      
+        
         $(ele).rateYo({
               readOnly: true,
               rating:scope.artists.number_of_stars
@@ -17,8 +17,8 @@ angular.module('LiveAPP.home',['LiveAPP.factory'])
 
 
 function homeCtrl($rootScope,$scope,$http,$location,dataFactory,artists){
-  console.log(artists)
-  $scope.recentArtist = [artists];
+  
+  $scope.recentArtist = artists;
   
 
 

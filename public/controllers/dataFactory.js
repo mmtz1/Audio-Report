@@ -11,7 +11,7 @@ function dataFactory($http, $location, $rootScope){
         url: '/artistsearch',
         params: {getArtist: "all"}
     }).then(function(recent){
-      return recent.data[0];
+      return recent.data;
     })
   };
 
@@ -20,7 +20,7 @@ function dataFactory($http, $location, $rootScope){
   dataFactory.artistInformation = {};
 
   dataFactory.checkDb = function(artist){
-      console.log("CHECK DB fired with",artist)
+      
       return $http({
         method: 'GET',
         url: '/artistsearch',

@@ -3,8 +3,8 @@
       <div class="row artistinfo">
         <div class="col-sm-6">
           <div><h1>{{artistInfo.artist_name}}</h1></div>
-          <ratestar></ratestar>
-          <div id='reviewsnum' >22 Reviews</div>
+          <div class="mainstar" ratemain></div>
+          <div id='reviewsnum' >{{avgData.reviews}} Reviews</div>
           <div class='genre'><h2>{{artistInfo.artist_genre}}</h2></div>
           <div><p>{{artistInfo.artist_bio}}</p></div>
           <div><button type="button" class="btn btn-primary" ng-click="reviewArtist()">Submit a Review for {{artistInfo.artist_name}} </button></div>
@@ -25,7 +25,7 @@
   <div class="mainreviewdata">
     <h4>{{review.user_name}}</h4>
     <h5 class="venue">{{review.venue}}</h5>
-    <ratestar class="reviewstars"></ratestar>
+    <ratereview class="reviewstars"></ratereview>
   </div>  
 
   <div>{{review.review_details}}</div>

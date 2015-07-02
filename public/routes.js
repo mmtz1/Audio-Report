@@ -32,41 +32,26 @@ $stateProvider.state("home", {
               .state("artist",{
                 url:'/artist/:artistname',
                 controller:"artistCtrl",
-                templateUrl:'/artistpage.html'
+                templateUrl:'/artistpage.html',
+                resolve:{
+                  getArtists: function($stateParams,dataFactory){
+                          
+                          return dataFactory.checkDb($stateParams.artistname).then(function(dbData){
+                            console.log(dbData)
+                            if(dbData.data != "No data"){
+                              return dbData
+                            } else{
+                              return dataFactory.artistInfoAPIs(newValue);
+                            }
+                          })
+                  }
+                }
               })
 
-              // $urlRouterProvider.otherwise('/')
+              $urlRouterProvider.otherwise('/')
 });
 
 
 
 
-
-// resolve: {
-//   artists: function (artistsService) {
-//     console.log('Resolve');
-//     // return artistsService.get(); //'/artistsearch',//artistsService.get();
-//   }
-// }
-
-
-// $routeProvider
-//   .when('/', {
-//     templateUrl : '/home.html',
-//     controller  : 'mainCtrl'
-//   })
-//   .when('/signup',{
-//     templateUrl : '/signup.html',
-//     controller  : 'signUpCtrl'
-//   })
-//   .when('/artist/:artistname',{
-//     templateUrl : '/artistpage.html',
-//     controller  : 'artistCtrl'
-//   })
-//   .when('/review',{
-//     templateUrl : '/review.html',
-//     controller  : 'reviewCtrl'
-//   })
-
-// })
 
