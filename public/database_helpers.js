@@ -11,15 +11,14 @@ var connection = mysql.createConnection({
     multipleStatements: true
 });
 
-// var connection = mysql.createConnection({
-//   host:"us-cdbr-iron-east-02.cleardb.net",
-//   user:"b00955d08fef04",
-//   password:"9bd21f2d",
-//   database:"heroku_fdeff37a1f83aa6"
-// });
+var connection = mysql.createConnection({
+  host:"us-cdbr-iron-east-02.cleardb.net",
+  user:"b00955d08fef04",
+  password:"9bd21f2d",
+  database:"heroku_fdeff37a1f83aa6"
+});
 
 exports.checkDbArtist = function(req, res, next){
-  
   if(req.query.getArtist){
     connection.query('SELECT * FROM reviews r INNER JOIN artist a ON r.artist_id = a.artist_id ORDER BY time DESC LIMIT 4;',function(err,rows){
       console.log(rows)

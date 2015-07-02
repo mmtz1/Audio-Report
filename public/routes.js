@@ -18,7 +18,6 @@ $stateProvider.state("home", {
                     }
                   }      
               })
-
               .state("signup",{
                 url:"/signup",
                 templateUrl : '/signup.html',
