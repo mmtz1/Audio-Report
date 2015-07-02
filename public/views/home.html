@@ -17,27 +17,27 @@
         <p class="front">Contribute to the knowledge base by writing your own review about your wonderful and poor concert experiences</p>
       </div>
     </div>
-  
   </div>
 </div>
-<h1 id="recenttitle">RECENT REVIEWS</h1>
+<div class='recenetheadercontainer'>
+  <img id='rockon' src='https://lh6.googleusercontent.com/-ZK8KksPtZu_WzCHwFquKJfzeyvFn_iDKrskT5X7kolFw1ydpj11CnlLS9YHsUld-qFURSPJ=s128-h128-e365'>
+  <h1 id="recenttitle">RECENT REVIEWS</h1>
+  <img id='rockonright' src='https://lh6.googleusercontent.com/-ZK8KksPtZu_WzCHwFquKJfzeyvFn_iDKrskT5X7kolFw1ydpj11CnlLS9YHsUld-qFURSPJ=s128-h128-e365'>
+</div>
 <div class="fullrecent">
-  <div class="recentconcerts" ng-repeat='artists in recentArtist'>
+  <div class="recentconcerts" ng-click="somefunc(artists.artist_name)"ng-repeat='artists in recentArtist'>
   <img class="recentimage" src="{{artists.artist_imageurl}}">
   <div id="text">
       <div id="headerrecent"><h3 >{{artists.artist_name}}</h3></div>
+      <h4 id="recentvenue">{{artists.venue}} | {{artists.concert_date}}</h4>
       <div id="starsrecent"><ratehome ></ratehome></div>
-      <div><h4>{{artists.venue}}</h4></div>
   </div> 
 
   
   </div>
+  
 </div>
 
 
 
 
-
-<!-- <div class="secondfrontimage">
-  <img src="http://www.bestmusicphotography.com/wp-content/uploads/2014/11/Taylor-Rice-of-Local-Natives-live-at-outside-lands-festival-by-scott-dudelson.jpg">
-</div>   -->
