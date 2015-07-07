@@ -21,7 +21,4 @@ function homeCtrl($rootScope,$scope,$http,$location,dataFactory,artists){
   $scope.somefunc = function(artist){
     $location.url("/artist/" + artist)
   }
-  
-
-
 }    
