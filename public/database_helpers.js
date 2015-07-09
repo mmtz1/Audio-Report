@@ -36,8 +36,7 @@ exports.checkDbArtist = function(req, res, next){
         console.log(artistData)
         res.send(artistData);
       })
-    }
-    else{
+    } else {
       res.send("No data")
     }
   })
@@ -61,13 +60,13 @@ exports.insertReviewDb = function(req,res,next){
   var date = new Date(req.body.concert_date)
 
   var mySqlDate = dateformat(date,"yyyy-mm-dd HH:MM:ss")
-  console.log(req.body) 
+  
   connection.query('SELECT artist_id FROM artist WHERE artist_name = ?', [req.body.artist_name],function(err, rows){
     req.body.artist_id = rows[0].artist_id;
     req.body.concert_date = mySqlDate
     var lastArtist = req.body.artist_name;
     delete req.body.artist_name;
-    console.log("PROOCESS",req.body)
+    
     connection.query('INSERT INTO ?? SET ?', ['reviews',req.body], function(err, result, rows){
       if (!err){
         res.send(lastArtist);
