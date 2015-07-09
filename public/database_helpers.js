@@ -2,6 +2,7 @@ var mysql = require('mysql');
 var express = require('express');
 var javascripthelp = require('./js/functionHelpers.js');
 var dateformat = require('dateformat');
+
 // var connection = mysql.createConnection({
 //     host        : 'localhost',
 //     port        :  3306,
@@ -30,10 +31,8 @@ exports.checkDbArtist = function(req, res, next){
   newArtist, function(err, rows, fields){
     if(rows.length != 0){
       var artistData = [rows[0]];
-      
       connection.query('SELECT * FROM reviews WHERE artist_id = ?', artistData[0].artist_id, function(err, result){
         artistData.push(result);
-        console.log(artistData)
         res.send(artistData);
       })
     } else {
