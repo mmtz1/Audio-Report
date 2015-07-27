@@ -32,16 +32,15 @@ angular.module('LiveAPP.artist',[])
     })
 
 function artistCtrl($scope, $http, $location, dataFactory, $stateParams, getArtists){
-    
-    $scope.artistInfo =  getArtists.data === undefined ? getArtists : getArtists.data[0]
-    $scope.reviews = getArtists.data === undefined ? "" : dataFactory.dateFormat(getArtists.data[1])
-    
-    $scope.avgData = dataFactory.avgReview($scope.reviews);
+  $scope.artistInfo =  getArtists.data === undefined ? getArtists : getArtists.data[0]
+  $scope.reviews = getArtists.data === undefined ? "" : dataFactory.dateFormat(getArtists.data[1])
+  
+  $scope.avgData = dataFactory.avgReview($scope.reviews);
 
-    $scope.reviewArtist = function(){
-      dataFactory.reviewArtist = $scope.artistInfo.artist_name;
-      $location.url("/review");
-    };  
+  $scope.reviewArtist = function(){
+    dataFactory.reviewArtist = $scope.artistInfo.artist_name;
+    $location.url("/review");
+  };  
     
 }
 

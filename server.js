@@ -62,18 +62,18 @@ connection.connect(function(err){
 });
 
 
-app.post('/signup',function(req,res){
+app.post('/signup', function(req,res){
   var newUser = req.body;
-  connection.query('INSERT INTO users SET ?',newUser, function(err, rows,fields){
+  connection.query('INSERT INTO users SET ?', newUser, function(err, rows,fields){
     if (!err){
       console.log("posted to database")
       res.sendStatus(200);
-    } else{
+    } else {
       console.log('Error while performing Query.');
       res.sendStatus(500);
     }
   }); 
-})
+});
 
 app.get('/artistsearch',dbhelpers.checkDbArtist);
 

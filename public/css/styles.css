@@ -40,10 +40,10 @@ hr {
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
 }
 
-.boxedsignup{
+.boxedsignup {
   border: 1px #FFFAFA ;
-  position:relative;
-  top:70px;
+  position: relative;
+  top: 70px;
   width: 500px;
   height: 300px;
   text-align: center;
@@ -54,8 +54,8 @@ hr {
   background-size: 1000px 400px ;
 }
 
-.pure-menu-horizontal{
-  background-color:#AAAAAA;
+.pure-menu-horizontal {
+  background-color: #AAAAAA;
 }
 
 h1 {
@@ -65,32 +65,35 @@ h1 {
   font-variant: normal;
   font-weight: 500;
   line-height: 50px;
-  color:white;
+  color: white;
 
 }
 
-.pure-button.sign-up{
+.pure-button.sign-up {
   position: relative;
-  float:right;
+  float: right;
 }
-.container{
+
+.container {
   margin: 0 auto;
 }
-.signup{
-  float:left;
+
+.signup {
+  float: left;
   margin-top: 10%;
   margin-left: 16%;
 }
-.turntable{
-  float:right;
+
+.turntable {
+  float: right;
   margin-top: 10%;
   margin-right: 16%;
-
 }
-.turntablepic{
-  width:50%;
-  height:50%;
-  margin-left:40%;
+
+.turntablepic {
+  width: 50%;
+  height: 50%;
+  margin-left: 40%;
 }
 
 .col-sm-6.reviews {
@@ -99,66 +102,60 @@ h1 {
   line-height: 35px;
 }
 
-div.container.this{
-  /*position:relative;*/
-  margin-top:-2%;
-  right:50%;
+div.container.this {
+  margin-top: -2%;
+  right: 50%;
   margin-left: 15px;
   margin-right: auto;
   left: 0;
   right: 0; 
-
 }
 
-.artistpageimage{
+.artistpageimage {
   border-radius: 25px;
-
-  width:100%;
-  float:right;
+  width: 100%;
+  float: right;
   margin-top:4.5%;
 }
 
-div.container.signin{
-  margin-top:100px;
+div.container.signin {
+  margin-top: 100px;
 }
 
-.reviewheader{
+.reviewheader {
   margin-left: 25px;
-  margin-bottom:-15px;
+  margin-bottom: -15px;
 }
 
 .reviewcontainer{
-  position:relative;
-  top:100px;
-  left:50%;
+  position: relative;
+  top: 100px;
+  left: 50%;
 }
 
 .reviewicon {
   display: inline-block;
   background-color: gray;
-  height:100px; 
-  width:100px;
+  height: 100px; 
+  width: 100px;
   border-radius: 10px;
-  
 }
 
-
-.divreviewimage{
+.divreviewimage {
   float: left;  
-  margin-right:10px; 
+  margin-right: 10px; 
 }
 
-.reviews{
-  margin-left:25px;
-  margin-right:25px;
+.reviews {
+  margin-left: 25px;
+  margin-right: 25px;
 }
 
-
-.concertimage{
-  margin-top:-200px;
+.concertimage {
+  margin-top: -200px;
 }
 
-.nicetext{
+.nicetext {
   font-family: 'Lato', sans-serif;
   font-weight: 400;
   text-align: center;
@@ -167,7 +164,8 @@ div.container.signin{
   margin-top: 10%;
   margin-bottom: 10%;
 }
-.fullhome{
+
+.fullhome {
   background-color: #FEF1D9;
   height: 100%;
   margin-top: -5%;
@@ -175,47 +173,44 @@ div.container.signin{
 }
 
 .navbar-custom {
-  background-color:#2C384D;
+  background-color: #2C384D;
   border-color: #E7E7E7;
 }
 
-.custom-search-form{
-  margin-top:7.5px;
-}
-.bottom{
-  margin-top:-5%;
+.custom-search-form {
+  margin-top: 7.5px;
 }
 
+.bottom {
+  margin-top: -5%;
+}
 
-.iconcontainer.first{
+.iconcontainer.first {
   display: inline-block;
-  width:35%;
-  height:50%;
-  margin-left:15%;
+  width: 35%;
+  height: 50%;
+  margin-left: 15%;
 }
 
-.iconcontainer.second{
+.iconcontainer.second {
   display: inline-block;
-  width:32%;
-  height:50%;
-  padding:1%;
+  width: 32%;
+  height: 50%;
+  padding: 1%;
 
 }
-
-
 
 .iconcontainer img {
   display: block;
   margin: 0 auto;
   text-align: center;
-  height:100%;
-  width:50%;
+  height: 100%;
+  width: 50%;
 }
 
-p.front{
+p.front {
   padding-right: 10%;
   padding-left: 20%;
-  
   font-family: 'Lato', sans-serif;
   font-weight: 400;
   font-size: 20px;
@@ -223,83 +218,82 @@ p.front{
 
 
 .col-lg-3{
-  margin-left:35%;
+  margin-left: 35%;
 }
 
-div.row.artistinfo{
-  width:107%;
+div.row.artistinfo {
+  width: 107%;
 }
 
 div.col-sm-6{
-  margin-top:10px;
+  margin-top: 10px;
 }
-.navbar-brand{
+.navbar-brand {
 font-family: 'Gravitas One', cursive;
-color:white;
+color: white;
 background-image: none;
 }
 
 .form-control.review{
-  width:25%;
+  width: 25%;
 }
 
-form.form-horizontal.fullform{
-  position:absolute;
+form.form-horizontal.fullform {
+  position: absolute;
   width: 100%;
-  margin-left:30%;
+  margin-left: 30%;
 }
 
 
-.mainreviewdata{
+.mainreviewdata {
   display: inline-block; 
   vertical-align:middle;
-  margin-left:.5%;
-  width:50%;
+  margin-left: .5%;
+  width: 50%;
   margin-top: -3%
-
 }
-
 
 .reviewstars{
-  margin-left:-1%;
+  margin-left: -1%;
 }
 
- #reviewsnum{
+ #reviewsnum {
   display: inline;
   vertical-align: 50%
   
 }
 
-#rockon{
+#rockon {
   display: inline-block;
 }
 
-.genre{
-  margin-top:-3%;
+.genre {
+  margin-top: -3%;
 }
 
-.reviewstarssub{
-  margin-left:20%;
+.reviewstarssub {
+  margin-left: 20%;
 }
 
-hr.reviewline{
-  margin:0;
-  border-color:white;
-  background-color:white;
+hr.reviewline {
+  margin: 0;
+  border-color: white;
+  background-color: white;
 }
-.fullrecent{
+
+.fullrecent {
   position: relative;
-  /*background-color: #8FA9DA;*/
 }
-.recentimage{
+
+.recentimage {
   position: relative;
   float: left;
-  width:  100%;
+  width: 100%;
   height: 500px;
   background-position: 50% 50%;
-  background-repeat:   no-repeat;
-  background-size:     cover;
-  padding:4%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 4%;
   border-radius: 43px;
 }   
 
@@ -314,66 +308,68 @@ hr.reviewline{
   text-align: center;
 }
 
-
 #text {
   background: rgba(255,255,255, .75);
   position: absolute;
   width: 100%;
-  height:20%;
-  float:left; 
-  bottom:4.5%;
-  left:4%;
+  height: 20%;
+  float: left; 
+  bottom: 4.5%;
+  left: 4%;
 }
 
-#headerrecent{
-  float:left;
-  margin-left:10px;
-  margin-top:-10px;
+#headerrecent {
+  float: left;
+  margin-left: 10px;
+  margin-top: -10px;
   display: inline-block;
-  margin-right:20px;
+  margin-right: 20px;
 }
 
-
-#starsrecent{
+#starsrecent {
   margin-top: 8%;
   margin-left: .5%;
 }
-#recenttitle{
+
+#recenttitle {
   display: inline-block;
-  margin:0;
+  margin: 0;
   padding-left: 33%;
   vertical-align: middle;
 }
-#rockonright{
+
+#rockonright {
   display: inline-block;
-  float:right;
+  float: right;
   padding-top: 7px;
-  width:5%;
+  width: 5%;
 }
 
-#rockon{
+#rockon {
   display: inline-block;
   padding-top: 7px;
-  width:5%;
+  width: 5%;
 }
-.recenetheadercontainer{
-  /*background-image: url(https://uwaterloo.ca/canada-day/sites/ca.canada-day/files/uploads/images/concert-crowds.jpg);*/
+
+.recenetheadercontainer {
   margin: 0 auto;
   background-color: #AD3333;
   background-position: 0px -50%;
   font-family: 'Lato', sans-serif;
-  color:white;
-  height:85px;
+  color: white;
+  height: 85px;
 }
 
-div.mainstar.jq-ry-container{
+div.mainstar.jq-ry-container {
   display: inline-block;
   padding-left: 0px;
 }
-#recentvenue{
-  float:left;
+
+#recentvenue {
+  float: left;
   margin-top: 2.5%;
 }
+
 #reviewdetails{
-  padding-top:1.5%;
+  padding-top: 1.5%;
 }

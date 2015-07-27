@@ -10,34 +10,34 @@ angular.module('LiveAPP', ['ui.router',
 .config(function($urlRouterProvider, $stateProvider) {
 $stateProvider.state("home", {
                 url:"/",
-                templateUrl : '/home.html',
-                controller  : 'homeCtrl',
+                templateUrl: '/home.html',
+                controller: 'homeCtrl',
                 resolve: {
-                    artists: function (dataFactory) {
+                    artists: function(dataFactory) {
                       return dataFactory.getRecentArtists();
                     }
                   }      
               })
               .state("signup",{
-                url:"/signup",
+                url: "/signup",
                 templateUrl : '/signup.html',
                 controller  : 'signUpCtrl'
               })
               .state("review",{
-                url:"/review",
-                controller:"reviewCtrl",
-                templateUrl:'/review.html'
+                url: "/review",
+                controller: "reviewCtrl",
+                templateUrl: '/review.html'
               })
               .state("artist",{
-                url:'/artist/:artistname',
+                url: '/artist/:artistname',
                 controller:"artistCtrl",
                 templateUrl:'/artistpage.html',
-                resolve:{
-                  getArtists: function($stateParams, dataFactory,$http){
+                resolve: {
+                  getArtists: function($stateParams, dataFactory,$http) {
                       return dataFactory.checkDb($stateParams.artistname).then(function(dbData){
                         if(dbData.data != "No data"){
                           return dbData;
-                        } else{
+                        } else {
                           return dataFactory.artistInfoAPIs($stateParams).then(function(data){
                                   var genre = data.data.artists.items[0].genres[0] || "";
                                   dataFactory.artistInfo.artist_genre = dataFactory.capitalLetter(genre);

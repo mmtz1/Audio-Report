@@ -25,17 +25,14 @@
   <img id='rockonright' src='https://lh6.googleusercontent.com/-ZK8KksPtZu_WzCHwFquKJfzeyvFn_iDKrskT5X7kolFw1ydpj11CnlLS9YHsUld-qFURSPJ=s128-h128-e365'>
 </div>
 <div class="fullrecent">
-  <div class="recentconcerts" ng-click="somefunc(artists.artist_name)"ng-repeat='artists in recentArtist'>
-  <img class="recentimage" src="{{artists.artist_imageurl}}">
-  <div id="text">
-      <div id="headerrecent"><h3 >{{artists.artist_name}}</h3></div>
-      <h4 id="recentvenue">{{artists.venue}} | {{artists.concert_date}}</h4>
-      <div id="starsrecent"><ratehome ></ratehome></div>
-  </div> 
-
-  
-  </div>
-  
+    <div class="recentconcerts" ng-click="somefunc(artists.artist_name)"ng-repeat='artists in recentArtist'>
+      <img class="recentimage" src="{{artists.artist_imageurl}}">
+      <div id="text">
+          <div id="headerrecent"><h3 >{{artists.artist_name}}</h3></div>
+          <h4 id="recentvenue">{{artists.venue}} | {{artists.concert_date}}</h4>
+          <div id="starsrecent"><ratehome ></ratehome></div>
+      </div> 
+    </div>
 </div>
 
 

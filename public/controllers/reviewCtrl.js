@@ -1,5 +1,5 @@
 angular.module('liveAPP.review',['LiveAPP.factory'])
-.controller('reviewCtrl', ['$scope','$http','dataFactory','$location',reviewCtrl])
+.controller('reviewCtrl', ['$scope', '$http', 'dataFactory', '$location', reviewCtrl])
 
 .directive("rating", function() {
     return {
@@ -9,16 +9,14 @@ angular.module('liveAPP.review',['LiveAPP.factory'])
         },
         template: "<div id='rateYo'></div>",
         link: function( scope, ele, attrs ) {
-            scope.$parent.rating
-            var $rateYo = $(ele).rateYo({
-              halfStar: true,
-              rating:0
-            });
-            
-
-            $rateYo.on("rateyo.change", function (e, data) {
-              scope.$parent.rating = $rateYo.rateYo("rating");
-              });  
+          scope.$parent.rating
+          var $rateYo = $(ele).rateYo({
+            halfStar: true,
+            rating:0
+          });
+          $rateYo.on("rateyo.change", function (e, data) {
+            scope.$parent.rating = $rateYo.rateYo("rating");
+          });  
         }
     };
 })
@@ -38,6 +36,7 @@ angular.module('liveAPP.review',['LiveAPP.factory'])
 
 function reviewCtrl($scope,$http,dataFactory,$location){
   $scope.rating = "";
+  
   $scope.therating = {
     number:2
   };
@@ -48,7 +47,6 @@ function reviewCtrl($scope,$http,dataFactory,$location){
     artist_name: dataFactory.reviewArtist,
     number_of_stars: "",
     concert_date:""
-  
   };
 
   
