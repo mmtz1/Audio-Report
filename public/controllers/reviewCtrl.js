@@ -29,7 +29,6 @@ angular.module('liveAPP.review',['LiveAPP.factory'])
         var date = $('#datepicker').datepicker({onClose: function(selectedDate) {
           scope.review.concert_date = selectedDate
         }});
-        
       }
   }      
 })

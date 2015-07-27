@@ -1,7 +1,6 @@
 angular.module('LiveAPP.factory',[])
 .factory('dataFactory', ['$http', '$location', '$rootScope', dataFactory])
 
-
 function dataFactory($http, $location, $rootScope){
   var dataFactory = {};
 
@@ -20,9 +19,9 @@ function dataFactory($http, $location, $rootScope){
       return "";
     }
     for(var i = 0; i < reviews.length; i++){
-      month = reviews[i].concert_date.substring(5,7)
-      year = reviews[i].concert_date.substring(2,4)
-      day = reviews[i].concert_date.substring(8,10)
+      month = reviews[i].concert_date.substring(5,7);
+      year = reviews[i].concert_date.substring(2,4);
+      day = reviews[i].concert_date.substring(8,10);
       reviews[i].concert_date = month + "/" + day + "/" + year
     }
     return reviews;
@@ -31,11 +30,10 @@ function dataFactory($http, $location, $rootScope){
   dataFactory.artistInformation = {};
 
   dataFactory.checkDb = function(artist){
-      
-      return $http({
-        method: 'GET',
-        url: '/artistsearch',
-        params: {artistname: artist}
+    return $http({
+      method: 'GET',
+      url: '/artistsearch',
+      params: {artistname: artist}
     })
   };
 
@@ -54,9 +52,6 @@ function dataFactory($http, $location, $rootScope){
     return $http.get("https://api.spotify.com/v1/search?q=" + artist + "&type=artist")
   };
 
-
-     
-
   dataFactory.capitalLetter = function(genre){
     if(genre == 'undefined'){
       return "";
@@ -74,31 +69,23 @@ function dataFactory($http, $location, $rootScope){
 
   };
 
-
-
-
-
-
   dataFactory.postTodb = function (data) {
     return $http.post('/artistsearch', data);
   };
 
   dataFactory.findWiki = function(data){
-    
     for(var i = 0; i < data.data.response.biographies.length; i++){
       if(data.data.response.biographies[i].site === 'wikipedia' && (data.data.response.biographies[i].text.indexOf("MIME") === -1)){
         return data.data.response.biographies[i].text.match( /[^\.!\?]+[\.!\?]+/g ).splice(0,4).join("");
       }
       else if (data.data.response.biographies[i].site === 'last.fm'){
-          var newest = data.data.response.biographies[i].text.toString().replace("There are two artists with this name.  1. ","")
-          var finaldata = newest.match( /[^\.!\?]+[\.!\?]+/g ).splice(0,4).join("");
-          return finaldata;
-        }
-      } 
-    }
+        var newest = data.data.response.biographies[i].text.toString().replace("There are two artists with this name.  1. ","")
+        var finaldata = newest.match( /[^\.!\?]+[\.!\?]+/g ).splice(0,4).join("");
+        return finaldata;
+      }
+    } 
+  }
   
-
-
   dataFactory.postReview = function(data){
     return $http.post('/reviews',data);
   };
