@@ -1,40 +1,85 @@
-<div class="fullhome">
- <img class="concertimage" src="./img/frontpage.jpg" width=100% height=100%>
-
-  <div class="bottom">
-
-    <div class="nicetext">
-      <h1 class="fontman">Audio Report is a place where you can come to write concert reviews</h1>
-    </div>
-
-    <div class="fullhome">
-      <div class='iconcontainer first'>
-        <img class='homeicons1' src="./img/reviewstarsicon.png">
-        <p class="front">Read what others are writing about concerts that they have attended to help you make a decision whether the band is worth your time.</p>
+<div class='front-page-img'>
+  <img class="img-responsive" src='img/frontpage.jpg' style='box-shadow: rgba(0,0,0,.2) 3px 5px 5px;'>
+  <div class='front-page-container-search'>
+    <h3>Audio Report is a place where you can come to write and read concert reviews!</h3>
+    <!-- <img src='img/reviewstarsicon.png' > -->
+<!--     <form>
+      <div class="input-group">
+        <input type="text" class="form-control" ng-model="artist" placeholder="Find artist...">
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="submit" ng-click=getArtist(artist)>
+            <span class="glyphicon glyphicon-search"></span>
+          </button>
+        </span>
       </div>
-      <div class='iconcontainer second'>
-        <img class='homeicons1' src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Keyboard-icon_Wikipedians.svg/800px-Keyboard-icon_Wikipedians.svg.png">
-        <p class="front">Contribute to the knowledge base by writing your own review about your wonderful and poor concert experiences</p>
-      </div>
-    </div>
+    </form> -->
   </div>
 </div>
-<div class='recenetheadercontainer'>
-  <img id='rockon' src='https://lh6.googleusercontent.com/-ZK8KksPtZu_WzCHwFquKJfzeyvFn_iDKrskT5X7kolFw1ydpj11CnlLS9YHsUld-qFURSPJ=s128-h128-e365'>
-  <h1 id="recenttitle">RECENT REVIEWS</h1>
-  <img id='rockonright' src='https://lh6.googleusercontent.com/-ZK8KksPtZu_WzCHwFquKJfzeyvFn_iDKrskT5X7kolFw1ydpj11CnlLS9YHsUld-qFURSPJ=s128-h128-e365'>
-</div>
-<div class="fullrecent">
-    <div class="recentconcerts" ng-click="somefunc(artists.artist_name)"ng-repeat='artists in recentArtist'>
-      <img class="recentimage" src="{{artists.artist_imageurl}}">
-      <div id="text">
-          <div id="headerrecent"><h3 >{{artists.artist_name}}</h3></div>
-          <h4 id="recentvenue">{{artists.venue}} | {{artists.concert_date}}</h4>
-          <div id="starsrecent"><ratehome ></ratehome></div>
-      </div> 
+
+<div class='parent'>
+  <div class="col-sm-6 desktop">
+    <h1>Recent Reviews</h1>
+    <hr>
+    <div class="col-sm-6 recent-reviews col-1">
+      <ul class='recent-artist-ul' style="display: inline-block;">
+        <li class='recent-artist' ng-click=takeToArtistPage(artist.artist_name) ng-repeat="artist in recentArtist" ng-if='$even'>
+          <img class='test' src='{{artist.artist_imageurl}}'>
+          <div class='recent-artist-front-info'>
+            <strong>{{artist.artist_name}}</strong> | {{artist.concert_date}}
+            <p>{{artist.venue}}</p>
+            <ratehome ></ratehome>
+          </div>
+        </li>
+      </ul>
     </div>
+    <div class="col-sm-6 recent-reviews col-2">
+      <ul class='recent-artist-ul' style="display: inline-block;">
+        <li class='recent-artist' ng-click=takeToArtistPage(artist.artist_name) ng-repeat="artist in recentArtist" ng-if='$odd'>
+          <img src='{{artist.artist_imageurl}}'>
+          <div class='recent-artist-front-info'>
+            <strong>{{artist.artist_name}}</strong> | {{artist.concert_date}}
+            <p>{{artist.venue}}</p>
+            <ratehome></ratehome>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+    <div class='mobile'>
+      <h1>Recent Concerts</h1>
+      <ul >
+        <li ng-repeat='artist in recentArtist'>
+            <div class='img' style="background-image:url('{{artist.artist_imageurl}}');"></div>
+            <div class='concert-info'>
+              <strong>{{artist.artist_name}}</strong> | {{artist.concert_date}}
+              <p>{{artist.venue}}</p>
+              <ratehome></ratehome>
+            </div>
+          <hr>
+        </li>
+      </ul>
+    </div>
+    <div class="col-sm-6 upcoming-concerts">
+      <h1>Upcoming Concerts</h1>
+      <hr class='upcoming'>
+      <googlemap></googlemap>
+      <ul class="list-group upcoming-concert-list">
+        <li ng-repeat="upcoming_concert in googleData.closeEvents" class="list-group-item upcoming-concert {{upcoming_concert.id}}">
+          <div class="upcoming-concert-info">
+            <h4><strong>{{upcoming_concert.eventHeadliner}}</strong></h4> 
+            <p>{{upcoming_concert.venue}}</p> 
+            <p>{{upcoming_concert.city}}</p> 
+            <p>{{upcoming_concert.date}}</p>
+          </div>
+          <button class="btn btn-default pull-right" ng-click='showLineup=!showLineup'>See line up</button>
+          <ul ng-show="showLineup"class="list-group line-up">
+            <li class="list-group-item" ng-repeat="lineup in upcoming_concert.performance">{{lineup.displayName}}</li>
+            <p style='text-align:center;' ng-hide='upcoming_concert.performance.length'>There are no opening artists for this show.</p>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  
 </div>
-
-
-
-
+    

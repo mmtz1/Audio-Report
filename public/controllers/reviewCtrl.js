@@ -55,6 +55,8 @@ function reviewCtrl($scope,$http,dataFactory,$location){
       $location.url('/artist/' + lastArtist);
     })
   };
+
+  dataFactory.showNav = true;
   
 }
 

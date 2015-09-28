@@ -1,41 +1,72 @@
 
-<div class="container this">
-      <div class="row artistinfo">
-        <div class="col-sm-6">
-          <div><h1>{{artistInfo.artist_name}}</h1></div>
-          <div class="mainstar" ratemain></div>
-          <div id='reviewsnum' >{{avgData.reviews}} Reviews</div>
-          <div class='genre'><h2>{{artistInfo.artist_genre}}</h2></div>
-          <div><p>{{artistInfo.artist_bio}}</p></div>
-          <div><button type="button" class="btn btn-primary" ng-click="reviewArtist()">Submit a Review for {{artistInfo.artist_name}} </button></div>
+<div class="container artistcontainer">
+  <div class="row">
+    <div class="col-sm-6">
+      <h1>{{artistInfo.artist_name}}</h1>
+      <div class="mainstar" ratemain></div>
+      <div id='reviewsnum' >{{avgData.reviews}} Reviews</div>
+      <h2>{{artistInfo.artist_genre}}</h2>
+      <p>{{artistInfo.artist_bio}}</p>
+      <button type="button" class="btn btn-primary" ng-click="reviewArtist()">Submit a Review for {{artistInfo.artist_name}} </button>
+      <br>
+      <br>
+    </div>  
+
+    <div class="col-sm-6 reviews">
+      <img class="artistpageimage" src={{artistInfo.artist_imageurl}}>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-sm-12'>
+    </div> 
+  </div>
+</div>
+
+
+
+
+<div class="container artistcontainer">
+  <div class="row">
+    <div class="col-sm-8">
+      <h2 class='reviewheader'>Reviews</h2><hr/>
+      <div ng-repeat="review in reviews"> 
+        <div class='review-img' >
+          <img src="https://openclipart.org/download/202776/pawn.svg" >
         </div>
-        <div class="col-sm-6 reviews">
-          <div><img class="artistpageimage" src={{artistInfo.artist_imageurl}}></div>
+        <div class='review-info'>
+          <h3>{{review.user_name}}</h3>
+          <h4>{{review.venue}} | {{review.concert_date}}</h4>
+          <ratereview class="reviewstars"></ratereview>
         </div>
+        <div class='review-paragraph'>
+          <p>{{review.review_details}}</p>
+        </div>  
       </div>
-</div>
+    </div>
+    <div class="col-sm-4">
+      <div id='upcomingconcertscontainer'>
+        <h2>Upcoming Concerts</h2>
+        <hr>
+        <ul id='concertlist'>
+          <li class='upcomingconcert'ng-repeat='concert in artistConcerts | limitTo:50'>
+            <div class='concertinfo'>
+              <div class='calender'>
+                <div class='top'>{{concert.date.month}}</div>
+                <div class='bottom'>{{concert.date.day}}</div>
+              </div>
+              <div class='concertlocation'>
+                <h4 class='locationvenue'>{{concert.venue}} </h4>
+                <h5 class='locationcity'>{{concert.city}} </h5>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div> 
+    </div>
+  </div>
+</div>  
 
 
-
-<div><h1 class='reviewheader'>Reviews</h1><hr style="width:95%;height:1px;border:none;color:#333;background-color:#333;"/></div>
-
-<div class='reviews' ng-repeat="review in reviews"> 
-  <img class='reviewicon' src="https://openclipart.org/download/202776/pawn.svg" >
-
-  <div class="mainreviewdata">
-    <h3>{{review.user_name}}</h3>
-    <h4 class="venue">{{review.venue}} | {{review.concert_date}}</h4>
-    <ratereview class="reviewstars"></ratereview>
-  </div>  
-
-  <div id="reviewdetails">{{review.review_details}}</div>
-  <hr style="width:100%;height:1px;border:none;color:#333;background-color:#333;"/>
-
-</div>
-<!-- <div class="mainstar"><ratestar ng-model="ratingInfo">shit</ratestar>shit</div>
-<div class='reviews' ng-repeat="review in reviews"> 
-  <ratestar class="reviewstars"></ratestar>
-</div> -->
 
 
 

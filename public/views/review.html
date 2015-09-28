@@ -1,49 +1,52 @@
-<form class="form-horizontal fullform">
-  <div class="form-group">
-    <label class="col-sm-2 control-label">Username</label>
-    <div class="col-sm-10 ">
-      <input type="text" class="form-control review"  placeholder="Username" ng-model="review.user_name">
-    </div>
-  </div>
+<div class='row'>
+  <div class='col-sm-offset-3 col-sm-6'>
+    <form class="form-horizontal review-form ">
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Username</label>
+        <div class="col-sm-10 ">
+          <input type="text" class="form-control"  placeholder="Username" ng-model="review.user_name">
+        </div>
+      </div>
 
-  <div class="form-group">
-    <label class="col-sm-2 control-label">Artist</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control review" placeholder="Artist Name" ng-model="review.artist_name">
-    </div>
-  </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Artist</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" placeholder="Artist Name" ng-model="review.artist_name">
+        </div>
+      </div>
 
-  <div class="form-group">
-    <label class="col-sm-2 control-label">Venue</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control review"  placeholder="Venue" ng-model="review.venue">
-    </div>
-  </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Venue</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control"  placeholder="Venue" ng-model="review.venue">
+        </div>
+      </div>
 
- <div class="form-group">
-    <label class="col-sm-2 control-label">Review Details</label>
-    <div class="col-sm-10">
-      <textarea class="form-control review" rows="3" ng-model="review.review_details"></textarea>
-    </div>
-  </div>
+     <div class="form-group">
+        <label class="col-sm-2 control-label">Review Details</label>
+        <div class="col-sm-10">
+          <textarea class="form-control" rows="3" ng-model="review.review_details"></textarea>
+        </div>
+      </div>
 
-  <div class="form-group">
-    <label class="col-sm-2 control-label">Concert Date</label>
-    <div class="col-sm-10">
-      <datepicker></datepicker>
-    </div>
-  </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Concert Date</label>
+        <div class="col-sm-10">
+          <datepicker></datepicker>
+        </div>
+      </div>
 
-  <div class="form-group">
-    <rating class="reviewstarssub"></rating>
-  </div>
+      <div class="form-group">
+        <rating id="review-star-rating"></rating>
+      </div>
 
-  <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-      <button type="submit" class="btn btn-default" ng-click="reviewSubmission(review)">Submit</button>
-    </div>
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <button type="submit" class="btn btn-default" ng-click="reviewSubmission(review)">Submit</button>
+        </div>
+      </div>
+    </form>
   </div>
-</form>
-
+</div>
 
 

@@ -12,46 +12,46 @@ app.use(express.static(__dirname + '/public/lib'));
 app.use(bodyParser())
 
 
-var db_config = {
-  host:"us-cdbr-iron-east-02.cleardb.net",
-  user:"b00955d08fef04",
-  password:"9bd21f2d",
-  database:"heroku_fdeff37a1f83aa6"
-};
-
 // var db_config = {
-//     host        : 'localhost',
-//     port        :  3306,
-//     user        : 'root',
-//     password    : '',
-//     database    : 'live',
-//     multipleStatements: true
-// }
+//   host:"us-cdbr-iron-east-02.cleardb.net",
+//   user:"b00955d08fef04",
+//   password:"9bd21f2d",
+//   database:"heroku_fdeff37a1f83aa6"
+// };
 
-// var connection = mysql.createConnection(db_config);
-
-function handleDisconnect() {
-  connection = mysql.createConnection(db_config); 
-                                                  
-
-  connection.connect(function(err) {              
-    if(err) {                                     
-      console.log('error when connecting to db:', err);
-      setTimeout(handleDisconnect, 2000); 
-    }                                     
-  });                                     
-                                          
-  connection.on('error', function(err) {
-    console.log('db error', err);
-    if(err.code === 'PROTOCOL_CONNECTION_LOST') { 
-      handleDisconnect();                         
-    } else {                                      
-      throw err;                                  
-    }
-  });
+var db_config = {
+    host        : 'localhost',
+    port        :  3306,
+    user        : 'root',
+    password    : '',
+    database    : 'live',
+    multipleStatements: true
 }
 
-handleDisconnect();
+var connection = mysql.createConnection(db_config);
+
+// function handleDisconnect() {
+//   connection = mysql.createConnection(db_config); 
+                                                  
+
+//   connection.connect(function(err) {              
+//     if(err) {                                     
+//       console.log('error when connecting to db:', err);
+//       setTimeout(handleDisconnect, 2000); 
+//     }                                     
+//   });                                     
+                                          
+//   connection.on('error', function(err) {
+//     console.log('db error', err);
+//     if(err.code === 'PROTOCOL_CONNECTION_LOST') { 
+//       handleDisconnect();                         
+//     } else {                                      
+//       throw err;                                  
+//     }
+//   });
+// }
+
+// handleDisconnect();
 
 connection.connect(function(err){
   if(!err) {
