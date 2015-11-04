@@ -1,47 +1,41 @@
 <!doctype html>
 <html> 
   <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js">
-    </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-route.min.js"></script>
-    <script src="./lib/angular-ui-router.js"></script>
-    <link rel="stylesheet" type="text/css" href="/css/styles.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <link rel="stylesheet" href="./lib/jquery.rateyo.css"/>
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     <link href='https://fonts.googleapis.com/css?family=Gravitas+One' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Bangers" />
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+    <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1'>
   </head>
   <body ng-app='LiveAPP'>
-    <div class="header" >
-      <nav ng-controller='mainCtrl' class="navbar navbar-custom navbar-static-top">
-        <div class="container-fluid">
-          <div class="navbar-header">
-          <a class="navbar-brand" href="/#/">Audio Report</a>
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-3">
-                <form role="search">
-                  <div class="input-group custom-search-form">
-                    <input type="text" class="form-control" ng-model="artist" required="required" aria-required="true" />
-                      <span class="input-group-btn">
-                    <button class="btn btn-default" type="submit" ng-click=getArtist(artist)>
-                      <span class="glyphicon glyphicon-search"></span>
-                    </button>
-                    </span>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-          </div>
+    <nav ng-controller='mainCtrl' class="navbar navbar-custom navbar-default">
+      <a class="navbar-brand navbar-brand-logo " href="/#/">
+        <div style='font-family: Bangers;' class="brand"> Audio Report </div>
+      </a>
+      <form>
+        <div class="input-group searchinput" >
+          <input type="text" class="form-control" ng-model='artist' placeholder="Search for...">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="submit" ng-click=getArtist(artist)><span class="glyphicon glyphicon-search" aria-hidden="true"></span> </button>
+          </span>
         </div>
-      </nav>
-     </div> 
-   
+      </form>
+    </nav>
     <div ui-view></div>
-
-    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  
+    <script src='//cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js'></script>
+    <script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/masonry/3.1.2/masonry.pkgd.min.js"></script>
+    <script src="//maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <script src="//desandro.github.io/imagesloaded/imagesloaded.pkgd.min.js"></script>
+<script src="//code.angularjs.org/1.2.13/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
+    <script src="./lib/angular-simple-logger.min.js"></script> 
+    <script src="./lib/angular-google-maps.min.js"></script> 
     <script src="./lib/jquery.rateyo.js"></script> 
     <script src="/routes.js"></script> 
     <script src="/controllers/mainCtrl.js"></script>

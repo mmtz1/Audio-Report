@@ -3,14 +3,10 @@ angular.module('LiveAPP.main',['LiveAPP.factory'])
 
 
 function mainCtrl($rootScope, $scope, $http, $location, dataFactory){
-  $scope.getArtist = function(artist){    
+  $scope.getArtist = function(artist){ 
     $location.url("/artist/" + artist);
   };
+     
+  $scope.artist = ''
+  
 }    
-
-
-    
-
-
-
-

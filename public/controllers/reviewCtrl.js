@@ -12,7 +12,7 @@ angular.module('liveAPP.review',['LiveAPP.factory'])
           scope.$parent.rating
           var $rateYo = $(ele).rateYo({
             halfStar: true,
-            rating:0
+            rating: 0
           });
           $rateYo.on("rateyo.change", function (e, data) {
             scope.$parent.rating = $rateYo.rateYo("rating");
@@ -55,6 +55,8 @@ function reviewCtrl($scope,$http,dataFactory,$location){
       $location.url('/artist/' + lastArtist);
     })
   };
+
+  dataFactory.showNav = true;
   
 }
 
