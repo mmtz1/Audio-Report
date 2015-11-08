@@ -1,0 +1,411 @@
+* {
+  font-family: 'Proxima Nova';
+}
+
+p{
+  font-family: 'Proxima Nova';
+}
+
+h1, h2, h3, h4, h5 {
+  margin: 10px 0px;
+}
+
+hr:not(.mobile-hr) {
+  margin-top:0px;
+}
+
+.navbar{
+  border-radius: 0px;
+  border: transparent;
+}
+
+.front-page-container-search{
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  color: white;
+  text-align: center;
+  top: 100px;
+  background-color: rgba(0, 0, 0, 0.6);
+  border: 1px solid black;
+  border-radius: 18PX;
+  padding: 15px;
+}
+
+.col-sm-6 hr {
+  margin: 0px; !important
+}
+
+.brand {
+  font-family: Bangers;
+  font-size: 40px;
+  color: white;
+}
+
+.upcoming-concert h4,  .upcoming-concert p {
+  margin: 0px;
+}
+
+.artist-page-img {
+  border-radius: 25px;
+  width: 100%;
+  padding: 3%;
+}
+
+.artist-container{
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.navbar-custom {
+  background-color: #2C384D;
+  color:white;
+}
+
+.navbar-brand {
+  color: white;
+  background-image: none;
+}
+
+.review-stars{
+  margin-left: -1%;
+}
+
+ #review-count {
+  display: inline;
+  vertical-align: 50%
+  
+} 
+
+/*#text {
+  background: rgba(255,255,255, .75);
+  position: absolute;
+  width: 100%;
+  height: 20%;
+  float: left; 
+  bottom: 4.5%;
+  left: 4%;
+}*/
+
+
+div.mainstar.jq-ry-container {
+  display: inline-block;
+  padding-left: 0px;
+}
+
+#recentvenue {
+  float: left;
+  margin-top: 2.5%;
+}
+
+#reviewdetails{
+  padding-top: 1.5%;
+}
+
+
+nav.navbar {
+  margin-bottom: 0;
+}
+
+div.container.artist-container {
+  margin-left: 0;
+  margin-right: 0;
+  width:100%;
+}
+
+.calender {
+  display: inline-block;
+  width: 60px;
+  height: 65px;
+  border: 1px solid #eee;
+  margin: 0px;
+  vertical-align: top;
+}
+
+.top {
+  background-color: #b81621;
+  text-align: center;
+  color: white;
+}
+.bottom{
+  font-family: 'Ubuntu', serif;
+  font-size: 200%;
+  text-align: center;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.concert-location{
+  display: inline-block;
+  width: 70%;
+}
+
+.location-venue, .location-city {
+  margin-top: 0px;
+}
+
+.homeicon .img-homeicon {
+  margin:0 auto;
+  width:100px;
+}
+
+#concert-list{
+  padding:0px;
+}
+
+.recent-artist{
+  border: 1px solid rgba(110, 105, 104, 0.26);
+  margin: 15px 7.5px;
+  box-shadow: rgba(0,0,0,.2) 3px 5px 5px;
+}
+ 
+.recent-artist img {
+  width:100%;
+}
+
+.recent-artist-ul{
+  color: #716860;
+  padding-left:0px;
+  
+}
+.search-bar{
+  display:none;
+}
+
+.recent-artist-front-info{
+  padding:3.5%;
+  text-align: left;
+}
+
+.jq-ry-container {
+  padding: 0px;
+}
+
+#map {
+  margin: 0 auto;
+  margin-top: 30px;
+}
+
+.upcoming-concert-info{
+  display: inline-block;
+  width: 50%;
+}
+.upcoming-concert button{
+  margin: 13px 0px;
+}
+
+.artist-upcoming-concert{
+  margin: 20px 0px;
+}
+
+.parent {
+  margin: 35px;
+}
+
+.mobile{
+  display: none;
+}
+
+.search-container{
+  display:none;
+}
+.search-group{
+  display:block;
+}
+
+.artist-search-input{
+  width:45%; !important
+}
+
+.list-group{
+  width: 85%;
+  margin: 0 auto;
+}
+
+.line-up{
+  margin-top: 20px;
+}
+
+.input-group.headersearch{
+  float: right;
+  padding: 10px;
+  width:25%;
+}
+
+.front-page-img {
+  margin-right:0px;
+}
+
+.recent-reviews {
+  display: inline-block;
+  width: 50%;
+  padding: 0;
+
+}
+
+.recent-reviews.col-1 {
+  float:left;
+}
+  
+.searchinput {
+  width: 30%;
+  float: right;
+  padding: 10px;
+}
+
+.review-img {
+  width: 80px;
+  background-color: gray;
+  padding: 9px;
+  display: inline-block;
+  float: left;
+  border-radius: 10px;
+}
+
+.review-info {
+  margin-left: 90px;
+}
+
+.review-paragraph {
+  margin: 18px 3px;
+}
+
+.review-form {
+  margin-top: 50px;
+}
+
+.not-found{
+  padding-top: 16px;
+  text-align: center;
+  font-size: 30px
+}
+
+
+.not-found-img{
+  width: 40%;
+  margin: 0 auto;
+  padding-top: 40px;
+}
+
+@media (max-width: 600px) {
+  .mobile, .search-input{
+    display: inherit;
+  }
+
+  .front-page-container-search{
+    display: none;
+  }
+
+  .mobile ul {
+    padding-left: 0px;
+    font-size: 17.5px;
+    margin-bottom:0px;
+    margin-top: 15px;
+  }
+
+  .search-container{
+    display:inherit;
+  }
+
+  .img {
+    position: relative;
+    float: left;
+    width: 85px;
+    height: 85px;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 10px;
+    margin-left: 15px;
+  }
+
+  .input-group.search-bar{
+    float: none;
+    margin: 0 auto;
+    width: 52%;
+  }
+  .jq-ry-container {
+    padding: 0;
+  }
+  .concert-info{
+    display: inline-block;
+    width:100%;
+    width: 53%;
+    font-size: 12px;
+    line-height: 7px;
+    padding: 10px;
+  }
+
+  .desktop {
+    display: none;
+  }
+
+  .parent{
+    margin:0px;
+  }
+
+  .upcoming-concert-list {
+    width:100%;
+    margin-top:25px;
+  }
+  .upcoming-concerts{
+    padding:0;
+  }
+
+  .navbar-custom {
+    background-color: #2C384D;
+    border-top: 1px solid #E7E7E7;
+  }
+
+  .custom-search-form{
+    width: 100%;
+    padding: 5px;
+    border-top: 1px solid #E7E7E7;
+    text-align: center;
+  }
+  .searchinput{
+    width: 75%;
+    margin: 0 auto;
+    float:none;
+  }
+
+  h1{
+    border-top: 1px solid #eee;
+    padding:10px 0px;
+    margin: 0px 0px;
+  }
+
+  hr.upcoming{
+    display:none;
+  }
+  .navbar-brand-logo{
+    float: none;
+    text-align: center;
+  }
+  .review-form{
+    margin-top: 50px;
+    padding:10px;
+  }
+  #review-star-rating{
+    margin: 0 auto;
+    left:0px;
+  }
+  .not-found{
+    font-size: 13px
+  }
+}
+
+@media (max-width: 770px){
+  .review-form{
+    padding:10px;
+  }
+  #review-star-rating{
+    margin: 0 auto;
+    left:0px;
+  }
+
+
+}
+

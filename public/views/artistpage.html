@@ -1,10 +1,10 @@
 
-<div class="container artistcontainer">
+<div class="container artist-container">
   <div class="row">
     <div class="col-sm-6">
       <h1>{{artistInfo.artist_name}}</h1>
       <div class="mainstar" ratemain></div>
-      <div id='reviewsnum' >{{avgData.reviews}} Reviews</div>
+      <div id='review-count' >{{avgData.reviews}} Reviews</div>
       <h2>{{artistInfo.artist_genre}}</h2>
       <p>{{artistInfo.artist_bio}}</p>
       <button type="button" class="btn" ng-click="reviewArtist()">Submit a Review for {{artistInfo.artist_name}} </button>
@@ -13,7 +13,7 @@
     </div>  
 
     <div class="col-sm-6 reviews">
-      <img class="artistpageimage" src={{artistInfo.artist_imageurl}}>
+      <img class="artist-page-img" ng-src={{artistInfo.artist_imageurl}}>
     </div>
   </div>
   <div class='row'>
@@ -25,18 +25,18 @@
 
 
 
-<div class="container artistcontainer">
+<div class="container artist-container">
   <div class="row">
     <div class="col-sm-8">
       <h2 class='reviewheader'>Reviews</h2><hr/>
       <div ng-repeat="review in reviews"> 
         <div class='review-img' >
-          <img src="https://openclipart.org/download/202776/pawn.svg" >
+          <img src="assets/img/pawn.svg" >
         </div>
         <div class='review-info'>
           <h3>{{review.user_name}}</h3>
           <h4>{{review.venue}} | {{review.concert_date}}</h4>
-          <ratereview class="reviewstars"></ratereview>
+          <ratereview class="review-stars"></ratereview>
         </div>
         <div class='review-paragraph'>
           <p>{{review.review_details}}</p>
@@ -49,16 +49,16 @@
         <hr>
         <h4 ng-show='!artistConcerts.length'>{{artistInfo.artist_name}} has no upcoming shows.</h4>
         <!-- <img src='img/Microphone-icon-0926011109.png'> -->
-        <ul id='concertlist'>
+        <ul id='concert-list'>
           <li class='artist-upcoming-concert'ng-repeat='concert in artistConcerts | limitTo:50'>
-            <div class='concertinfo'>
+            <div class='concert-info'>
               <div class='calender'>
                 <div class='top'>{{concert.date.month}}</div>
                 <div class='bottom'>{{concert.date.day}}</div>
               </div>
-              <div class='concertlocation'>
-                <h4 class='locationvenue'>{{concert.venue}} </h4>
-                <h5 class='locationcity'>{{concert.city}} </h5>
+              <div class='concert-location'>
+                <h4 class='location-venue'>{{concert.venue}} </h4>
+                <h5 class='location-city'>{{concert.city}} </h5>
               </div>
             </div>
           </li>
