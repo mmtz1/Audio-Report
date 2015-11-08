@@ -31,7 +31,7 @@
       <h2 class='reviewheader'>Reviews</h2><hr/>
       <div ng-repeat="review in reviews"> 
         <div class='review-img' >
-          <img src="assets/img/pawn.svg" >
+          <img ng-src="assets/img/pawn.svg" >
         </div>
         <div class='review-info'>
           <h3>{{review.user_name}}</h3>
@@ -40,7 +40,8 @@
         </div>
         <div class='review-paragraph'>
           <p>{{review.review_details}}</p>
-        </div>  
+        </div>
+        <hr>  
       </div>
     </div>
     <div class="col-sm-4">
@@ -48,7 +49,6 @@
         <h2>Upcoming Concerts</h2>
         <hr>
         <h4 ng-show='!artistConcerts.length'>{{artistInfo.artist_name}} has no upcoming shows.</h4>
-        <!-- <img src='img/Microphone-icon-0926011109.png'> -->
         <ul id='concert-list'>
           <li class='artist-upcoming-concert'ng-repeat='concert in artistConcerts | limitTo:50'>
             <div class='concert-info'>

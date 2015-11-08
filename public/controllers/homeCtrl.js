@@ -22,9 +22,8 @@ angular.module('LiveAPP.home',['LiveAPP.factory'])
     template: '<div id="map" style="width: 85%; height: 300px;"></div>',
     replace: true,
     link: function (scope, el, attrs) {
-      el.append('<div class="col-sm-12"><img style="width: 85%; height: 300px;" src="https://d13yacurqjgara.cloudfront.net/users/63485/screenshots/1136567/earth-gif-preloader.gif"></div>')
+      el.append('<div class="col-sm-12"><img style="width: 90%; height: 300px;" src="https://d13yacurqjgara.cloudfront.net/users/63485/screenshots/1136567/earth-gif-preloader.gif"></div>')
       LocalConcertsFactory.getUserLocation().then(function(location){
-        
         LocalConcertsFactory.getConcertsNearUser(location.metroId).then(function(concerts){
           
           sortedEvents = LocalConcertsFactory.sortPopularConcerts(concerts.data.resultsPage.results.event)

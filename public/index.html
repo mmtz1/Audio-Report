@@ -1,6 +1,7 @@
 <!doctype html>
 <html> 
   <head>
+    <title>Audio Report</title>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/lib/jquery.rateyo.css"/>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
@@ -9,7 +10,6 @@
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Bangers" />
     <link rel="stylesheet" type="text/css" href="assets/css/ProximaNovaFont.css">
     <link rel="stylesheet" type="text/css" href="assets/css/styles.css">
-
     <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1'>
   </head>
   <body ng-app='LiveAPP'>
@@ -17,11 +17,11 @@
       <a class="navbar-brand navbar-brand-logo " href="/#/">
         <div style='font-family: Bangers;' class="brand"> Audio Report </div>
       </a>
-      <form>
+      <form id='artist-search-form'>
         <div class="input-group searchinput" >
           <input type="text" class="form-control" ng-model='artist' placeholder="Search for...">
           <span class="input-group-btn">
-            <button class="btn btn-default" type="submit" ng-click=getArtist(artist)><span class="glyphicon glyphicon-search" aria-hidden="true"></span> </button>
+            <button class="btn btn-default search-btn" type="submit" ng-click=getArtist(artist)><span class="glyphicon glyphicon-search" aria-hidden="true"></span> </button>
           </span>
         </div>
       </form>
